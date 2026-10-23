@@ -1,0 +1,10 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {lightFraction,isReadable,bubbleGroups} from '../extension/ocr-layout.mjs';
+const pixels=new Uint8ClampedArray(400*300*4).fill(255);
+const r=(text,x,y,w=120,h=30,confidence=90)=>({text,bbox:{x0:x,y0:y,x1:x+w,y1:y+h},confidence});
+test('rejects ASCII art noise in Korean OCR despite high confidence',()=>{assert.equal(isReadable(r('ARR',10,10),'kor',1),false);assert.equal(isReadable(r('19',10,10),'kor',1),false);assert.equal(isReadable(r('남자 전용',10,10),'kor',.85),true);});
+test('rejects background art and low confidence without trusting OCR percentage',()=>{assert.equal(isReadable(r('배',10,10,20,30,37),'kor',.2),false);assert.equal(isReadable(r('일',10,10,30,60,90),'kor',.3),false);});
+test('merges nearby speech lines but not separated speech bubbles',()=>{const groups=bubbleGroups([r('남자 전용',100,30),r('사우나는 정말',70,75,170),r('할 일이 많구나',70,120,170),r('다른 말',70,245,170)],pixels,400,300);assert.equal(groups.length,2);assert.match(groups[0].text,/남자 전용\n사우나는 정말\n할 일이 많구나/);});
+test('dark border prevents separate bubbles merging',()=>{const copy=pixels.slice();for(let y=65;y<76;y++)for(let x=0;x<400;x++){const i=(y*400+x)*4;copy[i]=copy[i+1]=copy[i+2]=0;}const groups=bubbleGroups([r('첫 말',70,30),r('둘 말',70,80)],copy,400,300);assert.equal(groups.length,2);});
+test('empty or out-of-bounds background sample is not treated as white',()=>assert.equal(lightFraction(pixels,400,300,{x0:450,y0:0,x1:500,y1:20}),0));

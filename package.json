@@ -1,0 +1,6 @@
+{
+  "name": "manhwa-lens", "version": "1.1.0", "private": true, "type": "module",
+  "scripts": {"build": "node scripts/build.mjs", "test": "node --test tests/*.test.mjs", "test:browser": "node tests/browser.mjs", "test:panel": "node tests/user-panel.mjs"},
+  "dependencies": {"tesseract.js": "7.0.0"},
+  "devDependencies": {"playwright": "1.58.2"}
+}

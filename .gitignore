@@ -1,0 +1,15 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Test output runtime caches
+test-output/browser-profile/
+test-output/debug-dom.txt
+test-output/failure.png
+
+# Root temp files
+*.traineddata
+
+# OS artifacts
+.DS_Store
+Thumbs.db

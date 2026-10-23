@@ -1,0 +1,23 @@
+{
+  "status": "1 text regions. Edit recognized text below to improve a translation.",
+  "original": [
+    "남자 전용 사우나는... 정말 할 일이 많구나."
+  ],
+  "english": [
+    "The men-only sauna... there really is a lot to do."
+  ],
+  "errors": [
+    ""
+  ],
+  "overlays": [
+    {
+      "x": 189,
+      "y": 65.5,
+      "width": 280.5,
+      "height": 168,
+      "font": 28,
+      "hidden": false,
+      "overflow": false
+    }
+  ]
+}

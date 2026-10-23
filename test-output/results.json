@@ -1,0 +1,96 @@
+{
+  "testedAt": "2026-10-23T17:11:46.280Z",
+  "browser": "Chromium 145 (Playwright, headless extension profile)",
+  "reports": [
+    {
+      "test": "Popup language persistence",
+      "pass": true
+    },
+    {
+      "test": "Fixture is genuinely cross-origin and taints page canvas",
+      "pass": true
+    },
+    {
+      "test": "Korean bundled OCR + live English translation + whole-bubble grouping",
+      "pass": true,
+      "details": [
+        "Hello Joe [The weather is nice today"
+      ]
+    },
+    {
+      "test": "Overlay stays aligned on scroll",
+      "pass": true
+    },
+    {
+      "test": "Hide/show translation controls",
+      "pass": true
+    },
+    {
+      "test": "Edited OCR retry with live translation",
+      "pass": true
+    },
+    {
+      "test": "Remove all clears overlay and transcript",
+      "pass": true
+    },
+    {
+      "test": "Escape cancels region selection",
+      "pass": true
+    },
+    {
+      "test": "Visible-region screenshot OCR + English translation",
+      "pass": true,
+      "details": [
+        "Hello Jos|[ |ㄷ The weather is nice today"
+      ]
+    },
+    {
+      "test": "HTTP 403 hotlink failure automatically uses screenshot fallback",
+      "pass": true
+    },
+    {
+      "test": "Region OCR on Korean fixture",
+      "pass": true
+    },
+    {
+      "test": "Empty text validation error displayed actionably in transcript",
+      "pass": true
+    },
+    {
+      "test": "Translation recovers after user corrects text and retries",
+      "pass": true
+    },
+    {
+      "test": "jpn bundled model initializes and recognizes fixture",
+      "pass": true,
+      "details": [
+        "Hello",
+        "thank you"
+      ]
+    },
+    {
+      "test": "chi_sim bundled model initializes and recognizes fixture",
+      "pass": true,
+      "details": [
+        "Hello"
+      ]
+    },
+    {
+      "test": "eng bundled model initializes and recognizes fixture",
+      "pass": true,
+      "details": [
+        "Hello world",
+        "A new chapter"
+      ]
+    },
+    {
+      "test": "Restricted browser pages receive a clear error",
+      "pass": true
+    },
+    {
+      "test": "No uncaught page JavaScript errors",
+      "pass": true
+    }
+  ],
+  "errors": []
+}

@@ -1,0 +1,11 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {cropRect,imageUrl,translationText,parseTranslation,tiles,isDuplicate,language,mergeLines} from '../extension/core.mjs';
+test('clips partially visible image to viewport',()=>assert.deepEqual(cropRect({x:-20,y:100,width:500,height:1000},{width:800,height:600}),{x:0,y:100,width:480,height:500}));
+test('rejects offscreen, tiny and malformed captures',()=>{for(const r of [{x:0,y:900,width:100,height:10},{x:0,y:0,width:1,height:1},{x:NaN,y:0,width:100,height:100}])assert.throws(()=>cropRect(r,{width:800,height:600}));});
+test('only accepts HTTP image URLs without embedded credentials',()=>{assert.equal(imageUrl('https://example.org/a.png'),'https://example.org/a.png');for(const v of ['file:///etc/passwd','javascript:alert(1)','data:image/png,x','https://user:pass@example.org/a'])assert.throws(()=>imageUrl(v));});
+test('validates source languages and text size',()=>{assert.equal(language('kor'),'kor');assert.throws(()=>language('unknown'));assert.throws(()=>language('toString'));assert.throws(()=>translationText(' '));assert.throws(()=>translationText('a'.repeat(3001)));assert.equal(translationText(' hello '),'hello');});
+test('translation response preserves all sentence segments',()=>{assert.equal(parseTranslation([[['Hello','안녕'],[' world','세계']]]),'Hello world');assert.throws(()=>parseTranslation({error:'quota'}));assert.throws(()=>parseTranslation([[]]));});
+test('tile coverage has overlap and no gap',()=>{for(const h of [1,1800,1801,15000]){const ts=tiles(900,h);assert.equal(ts[0].y,0);assert.equal(ts.at(-1).y+ts.at(-1).height,h);for(let i=1;i<ts.length;i++)assert.equal(ts[i-1].y+ts[i-1].height-ts[i].y,120);}});
+test('merges nearby same-line fragments without joining different bubbles',()=>{const r=(text,x,y)=>({text,confidence:90,bbox:{x0:x,y0:y,x1:x+90,y1:y+30}});const rows=mergeLines([r('first',0,0),r('second',100,0),r('other bubble',400,0),r('next line',0,80)]);assert.equal(rows.length,3);assert.equal(rows[0].text,'first second');assert.equal(rows[0].bbox.x1,190);});
+test('deduplicates only strongly overlapping OCR regions',()=>{const a={bbox:{x0:0,y0:0,x1:100,y1:50}};assert.equal(isDuplicate(a,{bbox:{x0:5,y0:5,x1:105,y1:55}}),true);assert.equal(isDuplicate(a,{bbox:{x0:0,y0:60,x1:100,y1:110}}),false);});
