@@ -150,6 +150,12 @@ async function recognize(request) {
       crop.width=crop.height=0;
     }
   }finally{await engine.setParameters({tessedit_pageseg_mode:'11'});}
+  // Natural comic reading order: top-to-bottom, left-to-right
+  merged.sort((a,b)=>{
+    const dy = a.bbox.y0 - b.bbox.y0;
+    if (Math.abs(dy) < 35) return a.bbox.x0 - b.bbox.x0;
+    return dy;
+  });
   for(const [i,region] of merged.entries()){
     await progress(request.tabId,`Translating ${i+1}/${merged.length}…`);
     try{
