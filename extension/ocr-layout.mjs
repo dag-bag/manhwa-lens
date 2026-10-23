@@ -6,25 +6,37 @@ export function sampleSurface(pixels, width, height, bbox) {
   const x1 = Math.min(width, Math.ceil(bbox.x1)), y1 = Math.min(height, Math.ceil(bbox.y1));
 
   let lumSum = 0, count = 0;
+  let rSum = 0, gSum = 0, bSum = 0;
   for (let x = x0; x < x1; x += 2) {
     const iTop = (y0 * width + x) * 4;
-    lumSum += 0.299 * pixels[iTop] + 0.587 * pixels[iTop + 1] + 0.114 * pixels[iTop + 2];
+    const rT = pixels[iTop], gT = pixels[iTop + 1], bT = pixels[iTop + 2];
+    lumSum += 0.299 * rT + 0.587 * gT + 0.114 * bT;
+    rSum += rT; gSum += gT; bSum += bT;
     const yB = Math.max(y0, y1 - 1);
     const iBot = (yB * width + x) * 4;
-    lumSum += 0.299 * pixels[iBot] + 0.587 * pixels[iBot + 1] + 0.114 * pixels[iBot + 2];
+    const rB = pixels[iBot], gB = pixels[iBot + 1], bB = pixels[iBot + 2];
+    lumSum += 0.299 * rB + 0.587 * gB + 0.114 * bB;
+    rSum += rB; gSum += gB; bSum += bB;
     count += 2;
   }
   for (let y = y0; y < y1; y += 2) {
     const iLeft = (y * width + x0) * 4;
-    lumSum += 0.299 * pixels[iLeft] + 0.587 * pixels[iLeft + 1] + 0.114 * pixels[iLeft + 2];
+    const rL = pixels[iLeft], gL = pixels[iLeft + 1], bL = pixels[iLeft + 2];
+    lumSum += 0.299 * rL + 0.587 * gL + 0.114 * bL;
+    rSum += rL; gSum += gL; bSum += bL;
     const xR = Math.max(x0, x1 - 1);
     const iRight = (y * width + xR) * 4;
-    lumSum += 0.299 * pixels[iRight] + 0.587 * pixels[iRight + 1] + 0.114 * pixels[iRight + 2];
+    const rR = pixels[iRight], gR = pixels[iRight + 1], bR = pixels[iRight + 2];
+    lumSum += 0.299 * rR + 0.587 * gR + 0.114 * bR;
+    rSum += rR; gSum += gR; bSum += bR;
     count += 2;
   }
   const bgLum = count ? lumSum / count : 255;
   const isDark = bgLum < 110;
-  return { bgLum, isDark };
+  const bgR = count ? Math.round(rSum / count) : 255;
+  const bgG = count ? Math.round(gSum / count) : 255;
+  const bgB = count ? Math.round(bSum / count) : 255;
+  return { bgLum, isDark, bgR, bgG, bgB };
 }
 
 export function lightFraction(pixels, width, height, bbox) {

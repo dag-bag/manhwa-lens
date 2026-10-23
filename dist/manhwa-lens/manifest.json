@@ -9,5 +9,28 @@
   "background": {"service_worker": "background.js", "type": "module"},
   "icons": {"16":"icons/16.png","32":"icons/32.png","48":"icons/48.png","128":"icons/128.png"},
   "action": {"default_icon":{"16":"icons/16.png","32":"icons/32.png"},"default_popup": "popup.html", "default_title": "Manhwa Lens"},
+  "commands": {
+    "select-region": {
+      "suggested_key": {
+        "default": "Alt+X",
+        "mac": "Alt+X"
+      },
+      "description": "Select a comic region or speech bubble to translate"
+    },
+    "toggle-translations": {
+      "suggested_key": {
+        "default": "Alt+Z",
+        "mac": "Alt+Z"
+      },
+      "description": "Hide or show English translations"
+    },
+    "clear-translations": {
+      "suggested_key": {
+        "default": "Alt+C",
+        "mac": "Alt+C"
+      },
+      "description": "Remove all translations on the page"
+    }
+  },
   "content_security_policy": {"extension_pages": "script-src 'self' 'wasm-unsafe-eval'; object-src 'self'; worker-src 'self';"}
 }

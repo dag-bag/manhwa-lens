@@ -62,7 +62,14 @@ All character recognition runs **100% locally on your device** via WebAssembly. 
 - ⚡ **Multi-Tier Translation Engine:** Uses an unofficial Google web endpoint with automatic Chrome Dictionary and MyMemory community fallbacks. Includes rate-limit protection and request throttling.
 - 🛡️ **Protected & CORS Image Fallback:** If a site blocks direct image downloads (`403 Forbidden`, hotlink protection, canvas tainting), Manhwa Lens automatically falls back to an instant visible-region screenshot capture.
 - ✏️ **Interactive Sidebar Transcript:** View recognized original text alongside English translations and confidence scores. Easily edit stylized characters and click *"Translate edited text"* for an instant re-fetch.
-- ⌨️ **Keyboard Friendly:** Press `Escape` anytime to cancel area selection. Toggle translations on and off with a single click.
+- 👁️ **Interactive Press-to-Peek:** Click and hold any translation overlay to instantly reveal the original Korean raw art and text underneath with smooth opacity transition.
+- 📖 **Natural Reading-Order Sorting:** Overlays and transcript cards are automatically sorted in natural comic narrative order (top-to-bottom, left-to-right).
+- ⌨️ **Instant Keyboard Shortcuts:**
+  - `Alt + X` — Instantly activate the region selection crosshair.
+  - `Alt + Z` — Toggle hide / show all translations.
+  - `Alt + C` — Clear and remove all translations on the page.
+  - `Escape` — Cancel active region selection anytime.
+- 📋 **One-Click Clipboard Copy:** Copy recognized raw Korean or English translations straight from the sidebar transcript with a single click.
 
 ---
 

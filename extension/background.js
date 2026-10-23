@@ -70,3 +70,20 @@ chrome.runtime.onMessage.addListener((request,sender,reply)=>{
   };
   run().then(reply).catch(e=>reply({ok:false,error:e.message||String(e)}));return true;
 });
+
+chrome.commands?.onCommand?.addListener(async command=>{
+  const [tab]=await chrome.tabs.query({active:true,currentWindow:true});
+  if(!tab||!/^https?:/.test(tab.url||''))return;
+  try{
+    await chrome.scripting.executeScript({target:{tabId:tab.id},files:['content.js']});
+    if(command==='select-region'){
+      const stored=await chrome.storage.local.get('language');
+      const lang=stored.language||'kor';
+      await chrome.tabs.sendMessage(tab.id,{type:'SELECT',mode:'region',language:lang});
+    }else if(command==='toggle-translations'){
+      await chrome.tabs.sendMessage(tab.id,{type:'TOGGLE'});
+    }else if(command==='clear-translations'){
+      await chrome.tabs.sendMessage(tab.id,{type:'CLEAR'});
+    }
+  }catch{}
+});

@@ -128,7 +128,7 @@ async function recognize(request) {
   for(const r of regions){
     const surface=sampleSurface(pixels,canvas.width,canvas.height,r.bbox);
     if(isReadable(r,request.language,surface)){
-      readable.push({...r,isDark:surface.isDark});
+      readable.push({...r,isDark:surface.isDark,bgR:surface.bgR,bgG:surface.bgG,bgB:surface.bgB});
     }
   }
   if(!readable.length)throw new Error('No reliable speech-bubble or narration text found. Choose the correct language and select a tighter area around the text. Artwork and uncertain fragments were left unchanged.');
