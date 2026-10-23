@@ -74,7 +74,7 @@ export function cleanOcrText(text, lang = 'kor') {
       // Replace OCR digit '0' when directly attached to Hangul (e.g. 일0 -> 일이, 년0 -> 년이)
       .replace(/([\uAC00-\uD7A3])0(?=[\s\uAC00-\uD7A3.,!?]|$)/g, '$1이')
       // Common Hangul OCR character misreadings in manhwa:
-      .replace(/(낙자|님사)(\s*)(전용|저요)/g, '남자$2전용')
+      .replace(/(낙자|님사|남사)(\s*)(전용|저요)/g, '남자$2전용')
       .replace(/(남자|여자|남성|여성)(\s*)저요/g, '$1$2전용')
       .replace(/변태노예념/g, '변태노예년')
       // Normalize dots / ellipses
@@ -87,6 +87,31 @@ export function cleanOcrText(text, lang = 'kor') {
       .replace(/[\s|_\-~=*^`'"#$<>]+$/, '');
   }
   return cleaned.replace(/\s*\n\s*/g, ' ').replace(/ {2,}/g, ' ').trim();
+}
+
+// Retain reliable page segmentation: crop confidence alone is not evidence of a
+// better transcription, and a shorter crop can silently drop an entire word.
+export function preferReread(initial, candidate, lang = 'kor') {
+  const a = cleanOcrText(initial.text, lang), b = cleanOcrText(candidate.text, lang);
+  const letters = text => (text.match(/[\p{L}\p{N}]/gu) || []).length;
+  const chars = text => text.replace(/[^\p{L}\p{N}]/gu, '');
+  const aa=chars(a),bb=chars(b);
+  // Longest common subsequence measures retained evidence, not dictionary words.
+  const row=new Uint16Array(bb.length+1);
+  for(const ch of aa){let prev=0;for(let j=1;j<=bb.length;j++){const old=row[j];row[j]=ch===bb[j-1]?prev+1:Math.max(row[j],row[j-1]);prev=old;}}
+  const completion=aa.length>=2&&bb.length>=aa.length*1.25&&row[bb.length]>=aa.length*.8;
+  return Boolean(b && candidate.confidence >= 80 && letters(b)>=letters(a) &&
+    (completion || (initial.confidence < 80 && candidate.confidence >= initial.confidence + 12)));
+}
+
+// Saturated light glows are bright in at least one channel. Projecting their
+// maximum removes the halo without erasing neutral dark letter strokes.
+export function projectGlowPixels(data) {
+  for (let i = 0; i < data.length; i += 4) {
+    const v = 255 - Math.max(data[i], data[i + 1], data[i + 2]);
+    data[i] = data[i + 1] = data[i + 2] = v;
+  }
+  return data;
 }
 
 // Horizontal merge for words on the same line

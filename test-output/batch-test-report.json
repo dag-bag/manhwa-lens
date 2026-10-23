@@ -1,0 +1,577 @@
+{
+  "testedAt": "2026-10-23T20:59:45.472Z",
+  "totalPanels": 14,
+  "note": "Detection counts are not accuracy scores. Zero detections do not prove absence of text. Images are fixed crops, not complete chapters.",
+  "results": [
+    {
+      "index": 1,
+      "panel": "chapter-1/ch1_panel_01.png",
+      "elapsedMs": 3761,
+      "failure": null,
+      "assessment": {
+        "kind": "narration",
+        "expected": [
+          "돈과 재물?"
+        ],
+        "matched": [
+          "돈과 재물?"
+        ],
+        "missing": [],
+        "note": "Substring coverage is not a translation accuracy score; repeated SFX require visual review."
+      },
+      "status": "1 text regions. Edit recognized text below to improve a translation.",
+      "cards": [
+        {
+          "index": 1,
+          "korean": "돈과 재물?",
+          "english": "Money and wealth?",
+          "error": "",
+          "confidence": "91% OCR"
+        }
+      ],
+      "overlays": [
+        {
+          "text": "Money and wealth?×",
+          "isDark": false,
+          "visible": true,
+          "fontSize": "14px",
+          "bounds": {
+            "left": 711,
+            "top": 691,
+            "width": 177,
+            "height": 41
+          },
+          "scrollWidth": 177,
+          "clientWidth": 177
+        }
+      ],
+      "bubblesCount": 1,
+      "overlaysCount": 1,
+      "visibleOverlays": 1,
+      "snapshot": "batch_snapshot_1.png"
+    },
+    {
+      "index": 2,
+      "panel": "chapter-1/ch1_panel_02.png",
+      "elapsedMs": 1746,
+      "failure": null,
+      "assessment": {
+        "kind": "narration",
+        "expected": [
+          "명예와 긍지?"
+        ],
+        "matched": [
+          "명예와 긍지?"
+        ],
+        "missing": [],
+        "note": "Substring coverage is not a translation accuracy score; repeated SFX require visual review."
+      },
+      "status": "1 text regions. Edit recognized text below to improve a translation.",
+      "cards": [
+        {
+          "index": 1,
+          "korean": "명예와 긍지?",
+          "english": "Honor and pride?",
+          "error": "",
+          "confidence": "94% OCR"
+        }
+      ],
+      "overlays": [
+        {
+          "text": "Honor and pride?×",
+          "isDark": false,
+          "visible": true,
+          "fontSize": "14px",
+          "bounds": {
+            "left": 695,
+            "top": 391,
+            "width": 211,
+            "height": 45
+          },
+          "scrollWidth": 211,
+          "clientWidth": 211
+        }
+      ],
+      "bubblesCount": 1,
+      "overlaysCount": 1,
+      "visibleOverlays": 1,
+      "snapshot": "batch_snapshot_2.png"
+    },
+    {
+      "index": 3,
+      "panel": "chapter-1/ch1_panel_03.png",
+      "elapsedMs": 2408,
+      "failure": null,
+      "assessment": {
+        "kind": "narration",
+        "expected": [
+          "복수?"
+        ],
+        "matched": [
+          "복수?"
+        ],
+        "missing": [],
+        "clippedText": "권력과 힘? at upper edge",
+        "note": "Substring coverage is not a translation accuracy score; repeated SFX require visual review."
+      },
+      "status": "1 text regions. Edit recognized text below to improve a translation.",
+      "cards": [
+        {
+          "index": 1,
+          "korean": "복수?",
+          "english": "plural?",
+          "error": "",
+          "confidence": "97% OCR"
+        }
+      ],
+      "overlays": [
+        {
+          "text": "plural?×",
+          "isDark": false,
+          "visible": true,
+          "fontSize": "14px",
+          "bounds": {
+            "left": 752,
+            "top": 611,
+            "width": 95,
+            "height": 41
+          },
+          "scrollWidth": 95,
+          "clientWidth": 95
+        }
+      ],
+      "bubblesCount": 1,
+      "overlaysCount": 1,
+      "visibleOverlays": 1,
+      "snapshot": "batch_snapshot_3.png"
+    },
+    {
+      "index": 4,
+      "panel": "chapter-1/ch1_panel_04.png",
+      "elapsedMs": 4763,
+      "failure": null,
+      "assessment": {
+        "kind": "glowing narration",
+        "expected": [
+          "아니면",
+          "그 모든 것을 초월한 어떤 것?"
+        ],
+        "matched": [
+          "아니면",
+          "그 모든 것을 초월한 어떤 것?"
+        ],
+        "missing": [],
+        "clippedText": "Untranscribable purple lettering at bottom",
+        "note": "Substring coverage is not a translation accuracy score; repeated SFX require visual review."
+      },
+      "status": "2 text regions. Edit recognized text below to improve a translation.",
+      "cards": [
+        {
+          "index": 1,
+          "korean": "아니면",
+          "english": "or not",
+          "error": "",
+          "confidence": "96% OCR"
+        },
+        {
+          "index": 2,
+          "korean": "그 모든 것을 초월한 어떤 것?",
+          "english": "Something that transcends it all?",
+          "error": "",
+          "confidence": "96% OCR"
+        }
+      ],
+      "overlays": [
+        {
+          "text": "or not×",
+          "isDark": false,
+          "visible": true,
+          "fontSize": "14px",
+          "bounds": {
+            "left": 738,
+            "top": 386,
+            "width": 111,
+            "height": 41
+          },
+          "scrollWidth": 111,
+          "clientWidth": 111
+        },
+        {
+          "text": "Something that transcends it all?×",
+          "isDark": false,
+          "visible": true,
+          "fontSize": "14px",
+          "bounds": {
+            "left": 568,
+            "top": 469,
+            "width": 463,
+            "height": 41
+          },
+          "scrollWidth": 463,
+          "clientWidth": 463
+        }
+      ],
+      "bubblesCount": 2,
+      "overlaysCount": 2,
+      "visibleOverlays": 2,
+      "snapshot": "batch_snapshot_4.png"
+    },
+    {
+      "index": 5,
+      "panel": "chapter-1/ch1_panel_05.png",
+      "elapsedMs": 2273,
+      "failure": null,
+      "assessment": {
+        "kind": "narration",
+        "expected": [
+          "그 것은 이 곳에 있다"
+        ],
+        "matched": [
+          "그 것은 이 곳에 있다"
+        ],
+        "missing": [],
+        "note": "Substring coverage is not a translation accuracy score; repeated SFX require visual review."
+      },
+      "status": "1 text regions. Edit recognized text below to improve a translation.",
+      "cards": [
+        {
+          "index": 1,
+          "korean": "그 것은 이 곳에 있다",
+          "english": "it is here",
+          "error": "",
+          "confidence": "94% OCR"
+        }
+      ],
+      "overlays": [
+        {
+          "text": "it is here×",
+          "isDark": false,
+          "visible": true,
+          "fontSize": "14px",
+          "bounds": {
+            "left": 567,
+            "top": 696,
+            "width": 466,
+            "height": 56
+          },
+          "scrollWidth": 466,
+          "clientWidth": 466
+        }
+      ],
+      "bubblesCount": 1,
+      "overlaysCount": 1,
+      "visibleOverlays": 1,
+      "snapshot": "batch_snapshot_5.png"
+    },
+    {
+      "index": 6,
+      "panel": "chapter-1/ch1_panel_06.png",
+      "elapsedMs": 1656,
+      "failure": null,
+      "assessment": {
+        "kind": "calligraphic title",
+        "expected": [
+          "신의 탑"
+        ],
+        "matched": [],
+        "missing": [
+          "신의 탑"
+        ],
+        "note": "Substring coverage is not a translation accuracy score; repeated SFX require visual review."
+      },
+      "status": "No readable text found. Select a tighter speech bubble, zoom in, or choose the correct source language.",
+      "cards": [],
+      "overlays": [],
+      "bubblesCount": 0,
+      "overlaysCount": 0,
+      "visibleOverlays": 0,
+      "snapshot": "batch_snapshot_6.png"
+    },
+    {
+      "index": 7,
+      "panel": "chapter-1/ch1_panel_07.png",
+      "elapsedMs": 2252,
+      "failure": null,
+      "assessment": {
+        "kind": "Latin credits",
+        "expected": [
+          "NAVER"
+        ],
+        "matched": [],
+        "missing": [
+          "NAVER"
+        ],
+        "clippedText": "Latin email credit at top",
+        "note": "Substring coverage is not a translation accuracy score; repeated SFX require visual review."
+      },
+      "status": "No readable text found. Select a tighter speech bubble, zoom in, or choose the correct source language.",
+      "cards": [],
+      "overlays": [],
+      "bubblesCount": 0,
+      "overlaysCount": 0,
+      "visibleOverlays": 0,
+      "snapshot": "batch_snapshot_7.png"
+    },
+    {
+      "index": 8,
+      "panel": "chapter-2/ch2_panel_01.png",
+      "elapsedMs": 2008,
+      "failure": null,
+      "assessment": {
+        "kind": "visually verified text-free artwork",
+        "expected": [],
+        "matched": [],
+        "missing": [],
+        "note": "Substring coverage is not a translation accuracy score; repeated SFX require visual review."
+      },
+      "status": "No readable text found. Select a tighter speech bubble, zoom in, or choose the correct source language.",
+      "cards": [],
+      "overlays": [],
+      "bubblesCount": 0,
+      "overlaysCount": 0,
+      "visibleOverlays": 0,
+      "snapshot": "batch_snapshot_8.png"
+    },
+    {
+      "index": 9,
+      "panel": "chapter-2/ch2_panel_02.png",
+      "elapsedMs": 3382,
+      "failure": null,
+      "assessment": {
+        "kind": "handwritten panting effects",
+        "expected": [
+          "헉",
+          "헉",
+          "헉",
+          "헉",
+          "헉"
+        ],
+        "matched": [],
+        "missing": [
+          "헉",
+          "헉",
+          "헉",
+          "헉",
+          "헉"
+        ],
+        "note": "Substring coverage is not a translation accuracy score; repeated SFX require visual review."
+      },
+      "status": "No readable text found. Select a tighter speech bubble, zoom in, or choose the correct source language.",
+      "cards": [],
+      "overlays": [],
+      "bubblesCount": 0,
+      "overlaysCount": 0,
+      "visibleOverlays": 0,
+      "snapshot": "batch_snapshot_9.png"
+    },
+    {
+      "index": 10,
+      "panel": "chapter-2/ch2_panel_03.png",
+      "elapsedMs": 2486,
+      "failure": null,
+      "assessment": {
+        "kind": "handwritten panting effects",
+        "expected": [
+          "헉",
+          "헉"
+        ],
+        "matched": [],
+        "missing": [
+          "헉",
+          "헉"
+        ],
+        "note": "Substring coverage is not a translation accuracy score; repeated SFX require visual review."
+      },
+      "status": "No readable text found. Select a tighter speech bubble, zoom in, or choose the correct source language.",
+      "cards": [],
+      "overlays": [],
+      "bubblesCount": 0,
+      "overlaysCount": 0,
+      "visibleOverlays": 0,
+      "snapshot": "batch_snapshot_10.png"
+    },
+    {
+      "index": 11,
+      "panel": "chapter-2/ch2_panel_04.png",
+      "elapsedMs": 3027,
+      "failure": null,
+      "assessment": {
+        "kind": "stylized sound effects, text present",
+        "expected": [],
+        "matched": [],
+        "missing": [],
+        "clippedText": "Large outlined effect at top",
+        "note": "Substring coverage is not a translation accuracy score; repeated SFX require visual review."
+      },
+      "status": "No readable text found. Select a tighter speech bubble, zoom in, or choose the correct source language.",
+      "cards": [],
+      "overlays": [],
+      "bubblesCount": 0,
+      "overlaysCount": 0,
+      "visibleOverlays": 0,
+      "snapshot": "batch_snapshot_11.png"
+    },
+    {
+      "index": 12,
+      "panel": "chapter-2/ch2_panel_05.png",
+      "elapsedMs": 2909,
+      "failure": null,
+      "assessment": {
+        "kind": "handwritten panting effects",
+        "expected": [
+          "하아",
+          "하아"
+        ],
+        "matched": [],
+        "missing": [
+          "하아",
+          "하아"
+        ],
+        "clippedText": "Large white effect at top",
+        "note": "Substring coverage is not a translation accuracy score; repeated SFX require visual review."
+      },
+      "status": "No readable text found. Select a tighter speech bubble, zoom in, or choose the correct source language.",
+      "cards": [],
+      "overlays": [],
+      "bubblesCount": 0,
+      "overlaysCount": 0,
+      "visibleOverlays": 0,
+      "snapshot": "batch_snapshot_12.png"
+    },
+    {
+      "index": 13,
+      "panel": "chapter-2/ch2_panel_06.png",
+      "elapsedMs": 3466,
+      "failure": null,
+      "assessment": {
+        "kind": "dialogue and panting effects",
+        "expected": [
+          "헉",
+          "하아",
+          "하아",
+          "하아-",
+          "어딜....!"
+        ],
+        "matched": [],
+        "missing": [
+          "헉",
+          "하아",
+          "하아",
+          "하아-",
+          "어딜....!"
+        ],
+        "clippedText": "Additional balloon at bottom",
+        "note": "Substring coverage is not a translation accuracy score; repeated SFX require visual review."
+      },
+      "status": "No readable text found. Select a tighter speech bubble, zoom in, or choose the correct source language.",
+      "cards": [],
+      "overlays": [],
+      "bubblesCount": 0,
+      "overlaysCount": 0,
+      "visibleOverlays": 0,
+      "snapshot": "batch_snapshot_13.png"
+    },
+    {
+      "index": 14,
+      "panel": "chapter-2/ch2_panel_07.png",
+      "elapsedMs": 4132,
+      "failure": null,
+      "assessment": {
+        "kind": "dialogue",
+        "expected": [
+          "탑을 올라갈꺼야.",
+          "말했지, 밤?",
+          "이 탑을 올라가면 언젠가 바깥 세상으로 나갈 수 있다고.."
+        ],
+        "matched": [
+          "탑을 올라갈꺼야.",
+          "말했지, 밤?"
+        ],
+        "missing": [
+          "이 탑을 올라가면 언젠가 바깥 세상으로 나갈 수 있다고.."
+        ],
+        "note": "Substring coverage is not a translation accuracy score; repeated SFX require visual review."
+      },
+      "status": "3 text regions. Edit recognized text below to improve a translation.",
+      "cards": [
+        {
+          "index": 1,
+          "korean": "탑을 올라갈꺼야.",
+          "english": "I'm going to climb the tower.",
+          "error": "",
+          "confidence": "90% OCR"
+        },
+        {
+          "index": 2,
+          "korean": "말했지, 밤?",
+          "english": "Did you say, night?",
+          "error": "",
+          "confidence": "92% OCR"
+        },
+        {
+          "index": 3,
+          "korean": "이 탑을 올라가면 언젠가 바깥 세상 나갈 수 있다고.",
+          "english": "They say that if you climb this tower, you will be able to go to the outside world someday.",
+          "error": "",
+          "confidence": "87% OCR"
+        }
+      ],
+      "overlays": [
+        {
+          "text": "I'm going to climb the tower.×",
+          "isDark": false,
+          "visible": true,
+          "fontSize": "14px",
+          "bounds": {
+            "left": 713,
+            "top": 497,
+            "width": 165,
+            "height": 51.8125
+          },
+          "scrollWidth": 165,
+          "clientWidth": 165
+        },
+        {
+          "text": "Did you say, night?×",
+          "isDark": false,
+          "visible": true,
+          "fontSize": "14px",
+          "bounds": {
+            "left": 488,
+            "top": 656,
+            "width": 102,
+            "height": 51.8125
+          },
+          "scrollWidth": 102,
+          "clientWidth": 102
+        },
+        {
+          "text": "They say that if you climb this tower, you will be able to go to the outside world someday.×",
+          "isDark": false,
+          "visible": true,
+          "fontSize": "14px",
+          "bounds": {
+            "left": 536,
+            "top": 728,
+            "width": 146,
+            "height": 105.53125
+          },
+          "scrollWidth": 146,
+          "clientWidth": 146
+        }
+      ],
+      "bubblesCount": 3,
+      "overlaysCount": 3,
+      "visibleOverlays": 3,
+      "snapshot": "batch_snapshot_14.png"
+    }
+  ],
+  "summary": {
+    "panelsProcessed": 14,
+    "panelsWithDetections": 6,
+    "panelsWithoutDetections": 8,
+    "recognizedRegions": 9,
+    "visibleOverlays": 9,
+    "failures": 0
+  }
+}

@@ -11,9 +11,9 @@
   ],
   "overlays": [
     {
-      "x": 188.5,
+      "x": 188,
       "y": 68,
-      "width": 281.5,
+      "width": 283,
       "height": 163,
       "font": 28,
       "hidden": false,

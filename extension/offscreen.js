@@ -1,5 +1,5 @@
 import {LANGUAGES,language,translationText,parseTranslation,tiles,isDuplicate} from './core.mjs';
-import {sampleSurface,isReadable,bubbleGroups,cleanOcrText,preparePaddedCrop} from './ocr-layout.mjs';
+import {sampleSurface,isReadable,bubbleGroups,cleanOcrText,preparePaddedCrop,preferReread,projectGlowPixels} from './ocr-layout.mjs';
 const cache=new Map();
 let chain=Promise.resolve(),worker,workerLanguage;
 const progress=(tabId,message)=>chrome.runtime.sendMessage({type:'OCR_PROGRESS',tabId,message}).catch(()=>{});
@@ -73,7 +73,7 @@ async function decode(dataUrl,crop) {
     let sx=0,sy=0,sw=bitmap.width,sh=bitmap.height;
     if(crop){const {rect,viewport}=crop;sx=Math.round(rect.x*bitmap.width/viewport.width);sy=Math.round(rect.y*bitmap.height/viewport.height);sw=Math.round(rect.width*bitmap.width/viewport.width);sh=Math.round(rect.height*bitmap.height/viewport.height);}
     if(sw<1||sh<1||sw*sh>40000000)throw new Error('Image is too large. Select a smaller visible area.');
-    const scale=Math.min(2,2200/sw,Math.sqrt(24000000/(sw*sh)));
+    const scale=Math.min(1,2200/sw,Math.sqrt(24000000/(sw*sh)));
     const canvas=document.createElement('canvas');canvas.width=Math.max(1,Math.round(sw*scale));canvas.height=Math.max(1,Math.round(sh*scale));
     const ctx=canvas.getContext('2d',{willReadFrequently:true});ctx.fillStyle='white';ctx.fillRect(0,0,canvas.width,canvas.height);ctx.drawImage(bitmap,sx,sy,sw,sh,0,0,canvas.width,canvas.height);return canvas;
   } finally {bitmap.close();}
@@ -88,18 +88,38 @@ async function recognize(request) {
   if(chunks.length>24)throw new Error('This strip is too long. Select a smaller visible area.');
   for(const [index,tile] of chunks.entries()){
     await progress(request.tabId,`Reading panel ${index+1}/${chunks.length}…`);
-    const part=document.createElement('canvas');part.width=tile.width;part.height=tile.height;
-    part.getContext('2d').drawImage(canvas,0,tile.y,tile.width,tile.height,0,0,tile.width,tile.height);
-    const {data}=await engine.recognize(part,{}, {blocks:true,text:true});
-    for(const block of data.blocks||[])for(const paragraph of block.paragraphs||[]){
-      const text=(paragraph.text||paragraph.lines?.map(l=>l.text).join('\n')||'').trim();
-      if(!text || !/[\p{L}\p{N}]/u.test(text))continue;
-      const bbox=paragraph.bbox;
-      const region={text,confidence:paragraph.confidence??block.confidence??0,bbox:{x0:bbox.x0,y0:bbox.y0+tile.y,x1:bbox.x1,y1:bbox.y1+tile.y}};
-      const duplicate=regions.findIndex(r=>isDuplicate(r,region));
-      if(duplicate<0)regions.push(region);else if(region.text.length>regions[duplicate].text.length)regions[duplicate]=region;
+    // Native sampling preserves thin Hangul strokes; enlargement is complementary,
+    // not a replacement. The glow projection is useful only for Korean currently.
+    const enlarged=Math.min(2,2200/tile.width,Math.sqrt(12000000/(tile.width*tile.height)));
+    const passes=[{scale:1,glow:false}];
+    if(enlarged>1.1)passes.push({scale:enlarged,glow:false});
+    if(request.language==='kor')passes.push({scale:1,glow:true});
+    for(const pass of passes){
+      const part=document.createElement('canvas');part.width=Math.round(tile.width*pass.scale);part.height=Math.round(tile.height*pass.scale);
+      const ctx=part.getContext('2d',{willReadFrequently:true});
+      ctx.drawImage(canvas,0,tile.y,tile.width,tile.height,0,0,part.width,part.height);
+      if(pass.glow){const image=ctx.getImageData(0,0,part.width,part.height);projectGlowPixels(image.data);ctx.putImageData(image,0,0);}
+      const {data}=await engine.recognize(part,{}, {blocks:true,text:true});
+      for(const block of data.blocks||[])for(const paragraph of block.paragraphs||[]){
+        const text=(paragraph.text||paragraph.lines?.map(l=>l.text).join('\n')||'').trim();
+        if(!text || !/[\p{L}\p{N}]/u.test(text))continue;
+        const bbox=paragraph.bbox,sx=part.width/tile.width,sy=part.height/tile.height;
+        const region={text,confidence:paragraph.confidence??block.confidence??0,bbox:{x0:Math.floor(bbox.x0/sx),y0:Math.floor(bbox.y0/sy)+tile.y,x1:Math.ceil(bbox.x1/sx),y1:Math.ceil(bbox.y1/sy)+tile.y}};
+        // A clipped line cannot provide a complete transcription. Alternate color
+        // passes need strong evidence because they also expose texture in artwork.
+        if(bbox.y0<=1||bbox.y1>=part.height-1)continue;
+        if(pass.glow&&region.confidence<80)continue;
+        if(!isReadable(region,request.language,1))continue;
+        const duplicate=regions.findIndex(r=>isDuplicate(r,region));
+        if(duplicate<0)regions.push(region);
+        else{
+          const old=regions[duplicate];
+          const letters=t=>(t.match(/[\p{L}\p{N}]/gu)||[]).length;
+          if((region.confidence>=80&&letters(region.text)>letters(old.text)*1.2)||preferReread(old,region,request.language))regions[duplicate]=region;
+        }
+      }
+      part.width=part.height=0;
     }
-    part.width=part.height=0;
   }
   if(!regions.length)throw new Error('No readable text found. Select a tighter speech bubble, zoom in, or choose the correct source language.');
   if(regions.length>100)throw new Error('Too much text at once. Select a smaller area (up to 100 text regions).');
@@ -116,14 +136,13 @@ async function recognize(request) {
   await engine.setParameters({tessedit_pageseg_mode:'6'});
   try{
     for(const region of merged){
+      region.text=cleanOcrText(region.text||'',request.language);
       const b=region.bbox;
       const crop=preparePaddedCrop(canvas,b,region.isDark,24);
       const {data}=await engine.recognize(crop,{}, {text:true,blocks:false});
       const cleaned=cleanOcrText(data.text||'',request.language);
       const initial=cleanOcrText(region.text||'',request.language);
-      const countRe=(cleaned.match(/[\uAC00-\uD7A3]/g)||[]).length;
-      const countInit=(initial.match(/[\uAC00-\uD7A3]/g)||[]).length;
-      if(cleaned&&data.confidence>=45&&(countRe>=countInit||data.confidence>region.confidence)){
+      if(preferReread(region,{text:cleaned,confidence:data.confidence},request.language)){
         region.text=cleaned;region.confidence=data.confidence;
       }else if(initial){
         region.text=initial;

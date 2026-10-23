@@ -1,0 +1,19 @@
+{
+  "method": "Each of the 14 original images inspected visually, independently of OCR. Transcriptions are human-readable targets, not replacement rules.",
+  "panels": {
+    "chapter-1/ch1_panel_01.png": {"text": ["돈과 재물?"], "kind":"narration"},
+    "chapter-1/ch1_panel_02.png": {"text": ["명예와 긍지?"], "kind":"narration"},
+    "chapter-1/ch1_panel_03.png": {"text": ["복수?"], "clippedText": "권력과 힘? at upper edge", "kind":"narration", "translationIssue":"복수 means Revenge in this context; provider returned plural."},
+    "chapter-1/ch1_panel_04.png": {"text": ["아니면", "그 모든 것을 초월한 어떤 것?"], "clippedText":"Untranscribable purple lettering at bottom", "kind":"glowing narration"},
+    "chapter-1/ch1_panel_05.png": {"text": ["그 것은 이 곳에 있다"], "kind":"narration"},
+    "chapter-1/ch1_panel_06.png": {"text": ["신의 탑"], "kind":"calligraphic title"},
+    "chapter-1/ch1_panel_07.png": {"text": ["NAVER"], "clippedText":"Latin email credit at top", "kind":"Latin credits"},
+    "chapter-2/ch2_panel_01.png": {"text": [], "kind":"visually verified text-free artwork"},
+    "chapter-2/ch2_panel_02.png": {"text": ["헉", "헉", "헉", "헉", "헉"], "kind":"handwritten panting effects"},
+    "chapter-2/ch2_panel_03.png": {"text": ["헉", "헉"], "kind":"handwritten panting effects"},
+    "chapter-2/ch2_panel_04.png": {"text": [], "tentativeText":"촤, lower-left stylized effect", "clippedText":"Large outlined effect at top", "kind":"stylized sound effects, text present"},
+    "chapter-2/ch2_panel_05.png": {"text": ["하아", "하아"], "tentativeText":"Three smaller 헉-like effects", "clippedText":"Large white effect at top", "kind":"handwritten panting effects"},
+    "chapter-2/ch2_panel_06.png": {"text": ["헉", "하아", "하아", "하아-", "어딜....!"], "clippedText":"Additional balloon at bottom", "kind":"dialogue and panting effects"},
+    "chapter-2/ch2_panel_07.png": {"text": ["탑을 올라갈꺼야.", "말했지, 밤?", "이 탑을 올라가면 언젠가 바깥 세상으로 나갈 수 있다고.."], "kind":"dialogue", "note":"Also ellipsis-only bubble. Previous run omitted 말했지, 밤? and 으로; both translated overlays hidden."}
+  }
+}
