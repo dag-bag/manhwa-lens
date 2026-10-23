@@ -65,9 +65,9 @@ All character recognition runs **100% locally on your device** via WebAssembly. 
 - 👁️ **Interactive Press-to-Peek:** Click and hold any translation overlay to instantly reveal the original Korean raw art and text underneath with smooth opacity transition.
 - 📖 **Natural Reading-Order Sorting:** Overlays and transcript cards are automatically sorted in natural comic narrative order (top-to-bottom, left-to-right).
 - ⌨️ **Instant Keyboard Shortcuts:**
-  - `Alt + X` — Instantly activate the region selection crosshair.
-  - `Alt + Z` — Toggle hide / show all translations.
-  - `Alt + C` — Clear and remove all translations on the page.
+  - `Ctrl + Shift + X` or `Ctrl + Shift + S` — Instantly activate the region selection crosshair.
+  - `Ctrl + Shift + Z` — Toggle hide / show all translations.
+  - `Ctrl + Shift + C` — Clear and remove all translations on the page.
   - `Escape` — Cancel active region selection anytime.
 - 📋 **One-Click Clipboard Copy:** Copy recognized raw Korean or English translations straight from the sidebar transcript with a single click.
 

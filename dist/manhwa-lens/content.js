@@ -92,14 +92,16 @@
   });
   window.addEventListener('keydown',e=>{
     const a=document.activeElement;if(a&&(a.tagName==='INPUT'||a.tagName==='TEXTAREA'||a.isContentEditable))return;
-    const isX=e.key==='x'||e.key==='X'||e.code==='KeyX';
-    const isZ=e.key==='z'||e.key==='Z'||e.code==='KeyZ';
-    const isC=e.key==='c'||e.key==='C'||e.code==='KeyC';
-    if((e.altKey&&isX)||(e.ctrlKey&&e.shiftKey&&isX)){
+    const key=(e.key||'').toLowerCase(),code=e.code||'';
+    const isSelect=key==='x'||code==='KeyX'||key==='s'||code==='KeyS';
+    const isToggle=key==='z'||code==='KeyZ'||key==='t'||code==='KeyT';
+    const isClear=key==='c'||code==='KeyC';
+    const mod=(e.ctrlKey&&e.shiftKey)||e.altKey||(e.metaKey&&e.shiftKey);
+    if(mod&&isSelect){
       e.preventDefault();e.stopPropagation();selection('region',state.language);
-    }else if(e.altKey&&isZ){
+    }else if(mod&&isToggle){
       e.preventDefault();e.stopPropagation();state.visible=!state.visible;state.overlays.hidden=!state.visible;if(state.visible)state.items.forEach(position);
-    }else if(e.altKey&&isC){
+    }else if(mod&&isClear){
       e.preventDefault();e.stopPropagation();clear();
     }
   },true);

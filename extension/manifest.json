@@ -19,22 +19,22 @@
   "commands": {
     "select-region": {
       "suggested_key": {
-        "default": "Alt+X",
-        "mac": "Alt+X"
+        "default": "Ctrl+Shift+X",
+        "mac": "Command+Shift+X"
       },
       "description": "Select a comic region or speech bubble to translate"
     },
     "toggle-translations": {
       "suggested_key": {
-        "default": "Alt+Z",
-        "mac": "Alt+Z"
+        "default": "Ctrl+Shift+Z",
+        "mac": "Command+Shift+Z"
       },
       "description": "Hide or show English translations"
     },
     "clear-translations": {
       "suggested_key": {
-        "default": "Alt+C",
-        "mac": "Alt+C"
+        "default": "Ctrl+Shift+C",
+        "mac": "Command+Shift+C"
       },
       "description": "Remove all translations on the page"
     }

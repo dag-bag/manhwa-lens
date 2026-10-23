@@ -44,14 +44,25 @@ try {
   });
   assert.equal(hasSelection, false, 'Escape must cancel selection crosshair');
 
-  // Test 3: Ctrl+Shift+X also activates selection crosshair (alternate shortcut)
+  // Test 3: Ctrl+Shift+X and Ctrl+Shift+S activate selection crosshair
   await page.keyboard.press('Control+Shift+KeyX');
   await page.waitForTimeout(200);
   hasSelection = await page.evaluate(() => {
     const r = document.querySelector('[data-manhwa-lens]')?.shadowRoot;
     return Boolean(r?.querySelector('.selection'));
   });
-  assert.equal(hasSelection, true, 'Control+Shift+KeyX must also activate selection crosshair');
+  assert.equal(hasSelection, true, 'Control+Shift+KeyX must activate selection crosshair');
+
+  await page.keyboard.press('Escape');
+  await page.waitForTimeout(200);
+
+  await page.keyboard.press('Control+Shift+KeyS');
+  await page.waitForTimeout(200);
+  hasSelection = await page.evaluate(() => {
+    const r = document.querySelector('[data-manhwa-lens]')?.shadowRoot;
+    return Boolean(r?.querySelector('.selection'));
+  });
+  assert.equal(hasSelection, true, 'Control+Shift+KeyS must activate selection crosshair');
 
   // Cancel selection
   await page.keyboard.press('Escape');
