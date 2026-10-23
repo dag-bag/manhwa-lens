@@ -10,7 +10,12 @@ await new Promise(r=>server.listen(0,'127.0.0.1',r));
 let context;
 try{
  context=await chromium.launchPersistentContext('',{channel:'chromium',headless:true,viewport:{width:1280,height:800},args:[`--disable-extensions-except=${root}/dist/manhwa-lens`,`--load-extension=${root}/dist/manhwa-lens`]});
- const sw=context.serviceWorkers()[0]||await context.waitForEvent('serviceworker');const id=new URL(sw.url()).host;
+ let sw=context.serviceWorkers()[0];
+ if(!sw){
+  try{sw=await context.waitForEvent('serviceworker',{timeout:8000});}
+  catch{sw=context.serviceWorkers()[0];}
+ }
+ const id=new URL(sw.url()).host;
  const page=await context.newPage();const url=`http://127.0.0.1:${server.address().port}/`;await page.goto(url);await page.locator('img').evaluate(i=>i.decode());
  const popup=await context.newPage();await popup.goto(`chrome-extension://${id}/popup.html`);
  const tabId=await popup.evaluate(async url=>(await chrome.tabs.query({})).find(t=>t.url===url).id,url);

@@ -1,5 +1,5 @@
 {
-  "testedAt": "2026-10-23T17:11:46.280Z",
+  "testedAt": "2026-10-23T19:56:15.309Z",
   "browser": "Chromium 145 (Playwright, headless extension profile)",
   "reports": [
     {
@@ -14,7 +14,7 @@
       "test": "Korean bundled OCR + live English translation + whole-bubble grouping",
       "pass": true,
       "details": [
-        "Hello Joe [The weather is nice today"
+        "Hello Jo -ㅅ [The weather is nice today"
       ]
     },
     {
@@ -65,7 +65,7 @@
       "pass": true,
       "details": [
         "Hello",
-        "thank you"
+        "Thank you very much"
       ]
     },
     {

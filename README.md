@@ -3,7 +3,7 @@
 # 📖 Manhwa Lens
 
 **Translate Korean Manhwa, Japanese Manga, and Chinese Manhua into English in real time.**  
-*Free, open-source Chrome/Edge extension with 100% local WASM OCR, smart speech-bubble detection, and zero API keys.*
+*Free, open-source Chrome/Edge extension with 100% local WASM OCR, universal bubble/box detection across all colors, and zero API keys.*
 
 [![Manifest V3](https://img.shields.io/badge/Manifest-V3-brightgreen.svg?style=flat-square)](https://developer.chrome.com/docs/extensions/mv3/intro/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square)](LICENSE)
@@ -14,7 +14,17 @@
 
 <br/>
 
-<img src="assets/hero-demo.png" alt="Manhwa Lens in action" width="850" style="border-radius: 8px; box-shadow: 0 8px 30px rgba(0,0,0,0.3);"/>
+<!-- ============================================================== -->
+<!-- CLICKABLE DEMO BANNER: Replace the link below with your video/demo URL -->
+<!-- Example: [![Watch Demo](assets/showcase-banner.png)](https://youtu.be/YOUR_DEMO_ID) -->
+<!-- ============================================================== -->
+<a href="#demo-video-placeholder">
+  <img src="assets/showcase-banner.png" alt="Manhwa Lens All-Style Universal Translation" width="920" style="border-radius: 10px; box-shadow: 0 10px 40px rgba(0,0,0,0.4);"/>
+</a>
+
+<p align="center">
+  <i>👆 Click the showcase banner above to watch the walkthrough demo (link placeholder: replace <code>#demo-video-placeholder</code> with your video/YouTube link).</i>
+</p>
 
 </div>
 
@@ -22,35 +32,41 @@
 
 ## ⚡ Overview
 
-**Manhwa Lens** is an unpacked browser extension built for comic readers. Whether you're catching up on raws or browsing untranslated chapters on Webtoons, Naver, Kakao, or manga aggregator sites, Manhwa Lens overlays readable, clean English text directly over speech bubbles without altering the underlying artwork.
+**Manhwa Lens** is an unpacked browser extension built for comic and webtoon readers. Whether you're catching up on Korean raws or reading untranslated chapters on Webtoons, Naver, Kakao, or manga aggregator sites, Manhwa Lens overlays readable, natural English text directly over dialogue boxes without altering the artwork.
 
-All character recognition runs **100% locally on your device** via WebAssembly. Your screenshots and images **never** touch a third-party image server.
+### 🎨 Universal Support Across Every Comic Style & Color:
+1. **Classic Speech Bubbles:** White oval and circular bubbles with scanlation-grade typography.
+2. **Modern Chat & SMS Boxes:** Off-white, light gray, and pastel messaging bubbles (KakaoTalk, iMessage, Discord). Handles tilted text lines and censored dialogue (`xx`).
+3. **Cinematic Dark Narration Panels:** White text on pure black panels and dark flashback boxes, with automatic polarity-adaptive dark overlays (`#0e0b12` backdrop with crisp white font).
+
+All character recognition runs **100% locally on your device** via WebAssembly. Your comic panels and screenshots **never** touch an external image server.
 
 ---
 
-## ✨ Before & After
+## ✨ Tested Manhwa Scenarios
 
-| Original Korean Panel | Manhwa Lens Overlay & Transcript |
-| :---: | :---: |
-| <img src="assets/original-korean-panel.png" width="380" alt="Original Manhwa Panel"/> | <img src="assets/hero-demo.png" width="450" alt="Translated Manhwa Panel"/> |
-| *Raw Korean dialogue in speech bubble* | *Clean English overlay + sidebar transcript* |
+| 1. Classic Speech Bubble | 2. Modern Chat / SMS Boxes | 3. Cinematic Dark Narration |
+| :---: | :---: | :---: |
+| <img src="assets/hero-demo.png" width="300" alt="Classic Speech Bubble"/> | <img src="assets/chat-bubbles-demo.png" width="300" alt="Chat SMS Boxes"/> | <img src="assets/dark-panel-demo.png" width="300" alt="Dark Narration Panel"/> |
+| *Oval white bubble with locker background* | *Square chat boxes with tilted lines* | *White text on pure black background* |
 
 ---
 
 ## 🚀 Key Features
 
-- 🧠 **100% Local WASM OCR:** Ships with bundled Tesseract.js 7.0 and high-accuracy trained models (`kor`, `jpn`, `chi_sim`, `eng`). No external cloud OCR APIs or Python servers required.
-- 🛡️ **Speech Bubble Isolation & Noise Rejection:** Sophisticated layout analyzer (`ocr-layout.mjs`) filters out screentones, dark background artwork, locker tiles, and visual artifacts to prevent false-positive boxes.
-- 💬 **Sentence Grouping:** Rather than splitting multi-line dialogue into broken fragments, lines within the same bubble are merged into a single coherent sentence before translating.
-- 🔤 **Smart Typography Overlays:** Translated English text dynamically scales its font size to fit neatly inside the bubble with centered alignment and crisp contrast.
+- 🧠 **100% Local WASM OCR:** Bundled Tesseract.js 7.0 with offline trained LSTM models (`kor`, `jpn`, `chi_sim`, `eng`). No external cloud OCR APIs or Python servers required.
+- 🎨 **Adaptive Polarity & Color Sensing:** Automatically samples the perimeter background luminance of every text region. Intelligently renders white overlays on light bubbles and sleek dark overlays on black narration panels.
+- 🛡️ **Artwork Noise Rejection:** Layout analyzer (`ocr-layout.mjs`) filters out background textures, lockers, screentones, and panel frames while preserving genuine dialogue.
+- 💬 **Sentence Grouping & Line Merging:** Multi-line speech and chat text merge into continuous, coherent sentences before translating, avoiding choppy word fragments.
+- 🔤 **Scanlation-Grade Typography:** Dynamically scales font size (11px – 28px) with subtle ambient shadow, rounded corners (`12px`), and centered dialogue alignment.
 - ⚡ **Multi-Tier Translation Engine:** Uses an unofficial Google web endpoint with automatic Chrome Dictionary and MyMemory community fallbacks. Includes rate-limit protection and request throttling.
 - 🛡️ **Protected & CORS Image Fallback:** If a site blocks direct image downloads (`403 Forbidden`, hotlink protection, canvas tainting), Manhwa Lens automatically falls back to an instant visible-region screenshot capture.
-- ✏️ **Interactive Sidebar Transcript:** View recognized original text alongside English translations and confidence scores. Easily edit misread stylized characters and click *"Translate edited text"* for an instant re-fetch.
+- ✏️ **Interactive Sidebar Transcript:** View recognized original text alongside English translations and confidence scores. Easily edit stylized characters and click *"Translate edited text"* for an instant re-fetch.
 - ⌨️ **Keyboard Friendly:** Press `Escape` anytime to cancel area selection. Toggle translations on and off with a single click.
 
 ---
 
-## 📸 Screenshots
+## 📸 Interface Preview
 
 <div align="center">
   <table>
@@ -95,7 +111,7 @@ Manhwa Lens is distributed as an unpacked Manifest V3 extension. You can install
    - `Simplified Chinese · 简体中文`
    - `English`
 4. Choose your capture mode:
-   - **Select a region:** Click and drag a box around a speech bubble or dialogue panel. *(Best for canvas, background images, or tight speech bubbles).*
+   - **Select a region:** Click and drag a box around a speech bubble, chat box, or narration panel. *(Best for canvas, background images, or tight speech bubbles).*
    - **Select an image:** Click directly on an `<img>` tag in the reader.
 5. Watch the English translation overlay appear inside the speech bubble!
 6. Click **Hide translations** to peek at the original art, or click **Remove all** when you are done reading.
@@ -109,7 +125,7 @@ Manhwa Lens is distributed as an unpacked Manifest V3 extension. You can install
 │                       Browser Tab                           │
 │  ┌───────────────────────┐       ┌───────────────────────┐  │
 │  │     Webpage DOM       │       │    Manhwa Lens UI     │  │
-│  │   (Comic Panels)      │       │ (Shadow DOM Overlays) │  │
+│  │   (Comic Panels)      │       │ (Adaptive Overlays)   │  │
 │  └───────────▲───────────┘       └───────────▲───────────┘  │
 └──────────────┼───────────────────────────────┼──────────────┘
                │ Content Script (content.js)   │
@@ -127,15 +143,15 @@ Manhwa Lens is distributed as an unpacked Manifest V3 extension. You can install
 │  ┌─────────────────────────┐     ┌───────────────────────┐  │
 │  │   Local Tesseract WASM  │     │  Multi-Tier Translate │  │
 │  │   - LSTM Engine         │     │  - Google Web Client  │  │
-│  │   - Model Loader        │     │  - Dict API Fallback  │  │
+│  │   - Polarity Analyzer   │     │  - Dict API Fallback  │  │
 │  │   - ocr-layout Analyzer │     │  - MyMemory Fallback  │  │
 │  └─────────────────────────┘     └───────────────────────┘  │
 └─────────────────────────────────────────────────────────────┘
 ```
 
 1. **`background.js` (Service Worker):** Handles message dispatch, captures visible tabs when needed, and controls the offscreen worker.
-2. **`content.js` (Injected UI):** Runs in an isolated Shadow DOM (`#manhwa-lens-root`) so comic site styles never clash with the extension. Tracks window scrolling and resizing to anchor translations in real time.
-3. **`ocr-layout.mjs` (Layout Engine):** Performs luminosity sampling and heuristic clustering to identify true speech bubbles, deduplicate multi-tile captures, and group lines.
+2. **`content.js` (Injected UI):** Runs in an isolated Shadow DOM (`#manhwa-lens-root`) so comic site styles never clash with the extension. Renders polarity-adaptive overlays (`.overlay` vs `.overlay.dark`) and tracks window scrolling/resizing.
+3. **`ocr-layout.mjs` (Layout & Polarity Engine):** Evaluates perimeter luminance (`sampleSurface`), merges multi-line dialogue (`mergeSameLine`, `bubbleGroups`), cleans Hangul OCR artifacts (`cleanOcrText`), and prepares padded crops with contrast enhancement (`preparePaddedCrop`).
 4. **`offscreen.js` (OCR & Translation):** Hosts the heavy WebAssembly runtime outside the active tab, decoding images and executing multi-tier translation calls with memory caching.
 
 ---
@@ -202,25 +218,29 @@ pnpm test:browser
 
 ```text
 manhwa-lens/
-├── assets/                    # Showcase screenshots and fixture previews
+├── assets/                    # Showcase screenshots, demo banner & previews
 ├── dist/                      # Ready-to-load unpacked extension build
 │   └── manhwa-lens/           # Built extension (manifest.json, wasm, models)
 ├── extension/                 # Source code for the extension
 │   ├── background.js          # Service worker coordinator
 │   ├── content.js             # Shadow DOM UI & selection overlay
 │   ├── core.mjs               # Geometry, clipping & parsing utilities
-│   ├── ocr-layout.mjs         # Bubble detection & artwork noise filtering
+│   ├── ocr-layout.mjs         # Bubble detection, polarity & artwork filtering
 │   ├── offscreen.html/js      # Offscreen worker for local Tesseract WASM
 │   ├── popup.html/css/js      # Toolbar popup interface
 │   └── manifest.json          # Manifest V3 specification
 ├── scripts/                   # Build and packaging automation
 │   ├── build.mjs              # Asset bundler & model checksum verifier
 │   ├── icons.py               # PIL icon generator
+│   ├── make-showcase-banner.py# Banner compositor script
 │   └── package.py             # Verified ZIP release packager
 ├── tests/                     # Automated test suites
+│   ├── fixtures/              # Real-world manhwa panels (white, chat, dark)
 │   ├── browser.mjs            # End-to-end Playwright browser suite
 │   ├── core.test.mjs          # Unit tests for geometry & validation
-│   ├── ocr-layout.test.mjs    # Unit tests for bubble grouping
+│   ├── ocr-layout.test.mjs    # Unit tests for bubble grouping & polarity
+│   ├── test-chat-bubbles.mjs  # Regression test for chat/square boxes
+│   ├── test-dark-panel.mjs    # Regression test for dark narration panels
 │   ├── translation.test.mjs   # Unit tests for translation fallbacks
 │   └── user-panel.mjs         # Real-world manhwa panel regression test
 ├── LICENSE                    # MIT License

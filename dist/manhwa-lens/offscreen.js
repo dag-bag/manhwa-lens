@@ -1,5 +1,5 @@
 import {LANGUAGES,language,translationText,parseTranslation,tiles,isDuplicate} from './core.mjs';
-import {lightFraction,isReadable,bubbleGroups} from './ocr-layout.mjs';
+import {sampleSurface,isReadable,bubbleGroups,cleanOcrText,preparePaddedCrop} from './ocr-layout.mjs';
 const cache=new Map();
 let chain=Promise.resolve(),worker,workerLanguage;
 const progress=(tabId,message)=>chrome.runtime.sendMessage({type:'OCR_PROGRESS',tabId,message}).catch(()=>{});
@@ -104,18 +104,30 @@ async function recognize(request) {
   if(!regions.length)throw new Error('No readable text found. Select a tighter speech bubble, zoom in, or choose the correct source language.');
   if(regions.length>100)throw new Error('Too much text at once. Select a smaller area (up to 100 text regions).');
   const pixels=canvas.getContext('2d',{willReadFrequently:true}).getImageData(0,0,canvas.width,canvas.height).data;
-  const readable=regions.filter(r=>isReadable(r,request.language,lightFraction(pixels,canvas.width,canvas.height,r.bbox)));
-  if(!readable.length)throw new Error('No reliable speech-bubble text found. Choose the correct language and select a tighter area around a light speech bubble. Artwork and uncertain fragments were left unchanged.');
+  const readable=[];
+  for(const r of regions){
+    const surface=sampleSurface(pixels,canvas.width,canvas.height,r.bbox);
+    if(isReadable(r,request.language,surface)){
+      readable.push({...r,isDark:surface.isDark});
+    }
+  }
+  if(!readable.length)throw new Error('No reliable speech-bubble or narration text found. Choose the correct language and select a tighter area around the text. Artwork and uncertain fragments were left unchanged.');
   const merged=bubbleGroups(readable,pixels,canvas.width,canvas.height);
   await engine.setParameters({tessedit_pageseg_mode:'6'});
   try{
     for(const region of merged){
       const b=region.bbox;
-      const crop=document.createElement('canvas');crop.width=b.x1-b.x0;crop.height=b.y1-b.y0;
-      crop.getContext('2d').drawImage(canvas,b.x0,b.y0,crop.width,crop.height,0,0,crop.width,crop.height);
+      const crop=preparePaddedCrop(canvas,b,region.isDark,24);
       const {data}=await engine.recognize(crop,{}, {text:true,blocks:false});
-      const text=data.text.trim().replace(/\s*\n\s*/g,' ').replace(/ {2,}/g,' ');
-      if(text&&data.confidence>=45){region.text=text;region.confidence=data.confidence;}
+      const cleaned=cleanOcrText(data.text||'',request.language);
+      const initial=cleanOcrText(region.text||'',request.language);
+      const countRe=(cleaned.match(/[\uAC00-\uD7A3]/g)||[]).length;
+      const countInit=(initial.match(/[\uAC00-\uD7A3]/g)||[]).length;
+      if(cleaned&&data.confidence>=45&&(countRe>=countInit||data.confidence>region.confidence)){
+        region.text=cleaned;region.confidence=data.confidence;
+      }else if(initial){
+        region.text=initial;
+      }
       crop.width=crop.height=0;
     }
   }finally{await engine.setParameters({tessedit_pageseg_mode:'11'});}

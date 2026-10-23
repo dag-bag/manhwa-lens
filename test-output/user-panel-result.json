@@ -11,10 +11,10 @@
   ],
   "overlays": [
     {
-      "x": 189,
-      "y": 65.5,
-      "width": 280.5,
-      "height": 168,
+      "x": 188.5,
+      "y": 68,
+      "width": 281.5,
+      "height": 163,
       "font": 28,
       "hidden": false,
       "overflow": false
