@@ -277,6 +277,12 @@ Third-party libraries and model weights:
 
 ---
 
+## 🔍 Search & Discovery Keywords
+
+`manhwa-translator` · `manga-translator` · `webtoon-ocr` · `korean-manhwa-english` · `local-ocr-extension` · `tesseract-js-wasm` · `speech-bubble-translator` · `offline-manga-reader` · `raw-manhwa-reader` · `chrome-extension-mv3` · `edge-comic-translator` · `scanlation-tool` · `image-translator`
+
+---
+
 <div align="center">
   <sub>Made with 💜 for comic and manhwa enthusiasts worldwide.</sub>
 </div>
