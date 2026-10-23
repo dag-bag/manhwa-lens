@@ -1,0 +1,563 @@
+{
+  "title": "Omniscient Reader's Viewpoint (전지적 독자 시점) Chapter 1",
+  "testedAt": "2026-10-23T21:10:31.317Z",
+  "totalPanels": 12,
+  "results": [
+    {
+      "index": 1,
+      "panel": "orv_panel_01.png",
+      "elapsedMs": 16100,
+      "failure": null,
+      "status": "5 text regions. Edit recognized text below to improve a translation.",
+      "cards": [
+        {
+          "index": 1,
+          "korean": "정말 지지리도 인기가 없는 소설이 있었다.",
+          "english": "There was a novel that was truly unpopular.",
+          "error": "",
+          "confidence": "91% OCR"
+        },
+        {
+          "index": 2,
+          "korean": "멸망한 세계에서 살아남는 세 가지 방법",
+          "english": "Three ways to survive in a fallen world",
+          "error": "",
+          "confidence": "92% OCR"
+        },
+        {
+          "index": 3,
+          "korean": "1389화 댓글 1 조회수: 1",
+          "english": "Episode 1389 Comment 1 Views: 1",
+          "error": "",
+          "confidence": "73% OCR"
+        },
+        {
+          "index": 4,
+          "korean": "1388화 댓글 1 조회수 1387화 댓글 1조회수",
+          "english": "Episode 1388 Comments 1 Views Episode 1387 Comments 1 Views",
+          "error": "",
+          "confidence": "46% OCR"
+        },
+        {
+          "index": 5,
+          "korean": "1386화 댓글 1조회수: 1",
+          "english": "Episode 1386 Comments 1 Views: 1",
+          "error": "",
+          "confidence": "88% OCR"
+        }
+      ],
+      "overlays": [
+        {
+          "text": "There was a novel that was truly unpopular.×",
+          "isDark": false,
+          "visible": true,
+          "fontSize": "14px",
+          "bounds": {
+            "left": 631,
+            "top": 734,
+            "width": 338,
+            "height": 208
+          }
+        },
+        {
+          "text": "Three ways to survive in a fallen world×",
+          "isDark": false,
+          "visible": true,
+          "fontSize": "14px",
+          "bounds": {
+            "left": 506,
+            "top": 1206,
+            "width": 574,
+            "height": 51
+          }
+        },
+        {
+          "text": "Episode 1389 Comment 1 Views: 1×",
+          "isDark": false,
+          "visible": true,
+          "fontSize": "14px",
+          "bounds": {
+            "left": 578,
+            "top": 1323,
+            "width": 507,
+            "height": 49
+          }
+        },
+        {
+          "text": "Episode 1388 Comments 1 Views Episode 1387 Comments 1 Views×",
+          "isDark": false,
+          "visible": true,
+          "fontSize": "14px",
+          "bounds": {
+            "left": 578,
+            "top": 1405,
+            "width": 469,
+            "height": 127
+          }
+        },
+        {
+          "text": "Episode 1386 Comments 1 Views: 1×",
+          "isDark": false,
+          "visible": true,
+          "fontSize": "14px",
+          "bounds": {
+            "left": 578,
+            "top": 1564,
+            "width": 507,
+            "height": 48
+          }
+        }
+      ],
+      "bubblesCount": 5,
+      "overlaysCount": 5,
+      "visibleOverlays": 5,
+      "snapshot": "orv_snapshot_1.png"
+    },
+    {
+      "index": 2,
+      "panel": "orv_panel_02.png",
+      "elapsedMs": 11255,
+      "failure": null,
+      "status": "2 text regions. Edit recognized text below to improve a translation.",
+      "cards": [
+        {
+          "index": 1,
+          "korean": "1385화 댓글 1조회수 1384화 댓글 1 조회수 댓글 1조회수 아니 도대체 왜 1 조회수 다들 안 보는 거지? 1조회수 이 명작을? 1 조회수 1379화 댓글 1조회수",
+          "english": "Episode 1385 Comments 1 Views Episode 1384 Comments 1 Views Comments 1 Views Why on earth isn't everyone watching 1 Views? 1 Views This masterpiece? 1 Views 1379 Comments 1 Views",
+          "error": "",
+          "confidence": "65% OCR"
+        },
+        {
+          "index": 2,
+          "korean": "총 연재 횟수 3,149회 평균 조회 수 1.9회 평균 댓글 수 1.08개",
+          "english": "Total number of serializations: 3,149, average number of views: 1.9, average number of comments: 1.08",
+          "error": "",
+          "confidence": "88% OCR"
+        }
+      ],
+      "overlays": [
+        {
+          "text": "Episode 1385 Comments 1 Views Episode 1384 Comments 1 Views Comments 1 Views Why on earth isn't everyone watching 1 Views? 1 Views This masterpiece? 1 Views 1379 Comments 1 Views×",
+          "isDark": false,
+          "visible": true,
+          "fontSize": "14px",
+          "bounds": {
+            "left": 575,
+            "top": 43,
+            "width": 472,
+            "height": 529
+          }
+        },
+        {
+          "text": "Total number of serializations: 3,149, average number of views: 1.9, average number of comments: 1.08×",
+          "isDark": false,
+          "visible": true,
+          "fontSize": "14px",
+          "bounds": {
+            "left": 562,
+            "top": 1070,
+            "width": 476,
+            "height": 256
+          }
+        }
+      ],
+      "bubblesCount": 2,
+      "overlaysCount": 2,
+      "visibleOverlays": 2,
+      "snapshot": "orv_snapshot_2.png"
+    },
+    {
+      "index": 3,
+      "panel": "orv_panel_03.png",
+      "elapsedMs": 10885,
+      "failure": null,
+      "status": "2 text regions. Edit recognized text below to improve a translation.",
+      "cards": [
+        {
+          "index": 1,
+          "korean": "하긴, 3,000화가 넘는 소설을 누가 쉽게 읽으려 들겠어.",
+          "english": "Well, who would want to easily read a novel that has over 3,000 episodes?",
+          "error": "",
+          "confidence": "91% OCR"
+        },
+        {
+          "index": 2,
+          "korean": "유일한 독자인 나도 10년이 넘어서야 드디어 마지막 화를 최신순 | 1화부터 읽게 됐는데. 미열람 3ㅋ149 대",
+          "english": "As the only reader, it took me over 10 years to finally watch the last episode in order of latest | I started reading from episode 1. Unviewed 3ㅋ 149 units",
+          "error": "",
+          "confidence": "76% OCR"
+        }
+      ],
+      "overlays": [
+        {
+          "text": "Well, who would want to easily read a novel that has over 3,000 episodes?×",
+          "isDark": false,
+          "visible": true,
+          "fontSize": "14px",
+          "bounds": {
+            "left": 510,
+            "top": 161,
+            "width": 281,
+            "height": 130
+          }
+        },
+        {
+          "text": "As the only reader, it took me over 10 years to finally watch the last episode in order of latest | I started reading from episode 1. Unviewed 3ㅋ 149 units×",
+          "isDark": false,
+          "visible": true,
+          "fontSize": "14px",
+          "bounds": {
+            "left": 490,
+            "top": 921,
+            "width": 632,
+            "height": 290
+          }
+        }
+      ],
+      "bubblesCount": 2,
+      "overlaysCount": 2,
+      "visibleOverlays": 2,
+      "snapshot": "orv_snapshot_3.png"
+    },
+    {
+      "index": 4,
+      "panel": "orv_panel_04.png",
+      "elapsedMs": 6686,
+      "failure": null,
+      "status": "2 text regions. Edit recognized text below to improve a translation.",
+      "cards": [
+        {
+          "index": 1,
+          "korean": "이때의 나는 아직",
+          "english": "At this time, I am still",
+          "error": "",
+          "confidence": "95% OCR"
+        },
+        {
+          "index": 2,
+          "korean": "모르고 있었다.",
+          "english": "I didn't know.",
+          "error": "",
+          "confidence": "96% OCR"
+        }
+      ],
+      "overlays": [
+        {
+          "text": "At this time, I am still×",
+          "isDark": false,
+          "visible": true,
+          "fontSize": "14px",
+          "bounds": {
+            "left": 537,
+            "top": 438,
+            "width": 525,
+            "height": 93
+          }
+        },
+        {
+          "text": "I didn't know.×",
+          "isDark": true,
+          "visible": true,
+          "fontSize": "14px",
+          "bounds": {
+            "left": 567,
+            "top": 536,
+            "width": 466,
+            "height": 96
+          }
+        }
+      ],
+      "bubblesCount": 2,
+      "overlaysCount": 2,
+      "visibleOverlays": 2,
+      "snapshot": "orv_snapshot_4.png"
+    },
+    {
+      "index": 5,
+      "panel": "orv_panel_05.png",
+      "elapsedMs": 6041,
+      "failure": null,
+      "status": "1 text regions. Edit recognized text below to improve a translation.",
+      "cards": [
+        {
+          "index": 1,
+          "korean": ",계",
+          "english": ",total",
+          "error": "",
+          "confidence": "91% OCR"
+        }
+      ],
+      "overlays": [
+        {
+          "text": ",total×",
+          "isDark": true,
+          "visible": true,
+          "fontSize": "14px",
+          "bounds": {
+            "left": 903,
+            "top": 643,
+            "width": 202,
+            "height": 157
+          }
+        }
+      ],
+      "bubblesCount": 1,
+      "overlaysCount": 1,
+      "visibleOverlays": 1,
+      "snapshot": "orv_snapshot_5.png"
+    },
+    {
+      "index": 6,
+      "panel": "orv_panel_06.png",
+      "elapsedMs": 9900,
+      "failure": null,
+      "status": "2 text regions. Edit recognized text below to improve a translation.",
+      "cards": [
+        {
+          "index": 1,
+          "korean": "개 들...",
+          "english": "Dogs...",
+          "error": "",
+          "confidence": "51% OCR"
+        },
+        {
+          "index": 2,
+          "korean": "가여",
+          "english": "Go",
+          "error": "",
+          "confidence": "43% OCR"
+        }
+      ],
+      "overlays": [
+        {
+          "text": "Dogs...×",
+          "isDark": true,
+          "visible": true,
+          "fontSize": "14px",
+          "bounds": {
+            "left": 553,
+            "top": 385,
+            "width": 240,
+            "height": 82
+          }
+        },
+        {
+          "text": "Go×",
+          "isDark": true,
+          "visible": true,
+          "fontSize": "14px",
+          "bounds": {
+            "left": 548,
+            "top": 1334,
+            "width": 75,
+            "height": 46
+          }
+        }
+      ],
+      "bubblesCount": 2,
+      "overlaysCount": 2,
+      "visibleOverlays": 2,
+      "snapshot": "orv_snapshot_6.png"
+    },
+    {
+      "index": 7,
+      "panel": "orv_panel_07.png",
+      "elapsedMs": 5046,
+      "failure": null,
+      "status": "2 text regions. Edit recognized text below to improve a translation.",
+      "cards": [
+        {
+          "index": 1,
+          "korean": "/소",
+          "english": "/cow",
+          "error": "",
+          "confidence": "82% OCR"
+        },
+        {
+          "index": 2,
+          "korean": "네로",
+          "english": "Nero",
+          "error": "",
+          "confidence": "46% OCR"
+        }
+      ],
+      "overlays": [
+        {
+          "text": "/cow×",
+          "isDark": true,
+          "visible": true,
+          "fontSize": "14px",
+          "bounds": {
+            "left": 954,
+            "top": 114,
+            "width": 96,
+            "height": 35.90625
+          }
+        },
+        {
+          "text": "Nero×",
+          "isDark": true,
+          "visible": true,
+          "fontSize": "14px",
+          "bounds": {
+            "left": 717,
+            "top": 249,
+            "width": 66,
+            "height": 37
+          }
+        }
+      ],
+      "bubblesCount": 2,
+      "overlaysCount": 2,
+      "visibleOverlays": 2,
+      "snapshot": "orv_snapshot_7.png"
+    },
+    {
+      "index": 8,
+      "panel": "orv_panel_08.png",
+      "elapsedMs": 9645,
+      "failure": null,
+      "status": "2 text regions. Edit recognized text below to improve a translation.",
+      "cards": [
+        {
+          "index": 1,
+          "korean": ". 줄쓰",
+          "english": ". Joolseu",
+          "error": "",
+          "confidence": "52% OCR"
+        },
+        {
+          "index": 2,
+          "korean": "소서",
+          "english": "saucer",
+          "error": "",
+          "confidence": "44% OCR"
+        }
+      ],
+      "overlays": [
+        {
+          "text": ". Joolseu×",
+          "isDark": true,
+          "visible": true,
+          "fontSize": "14px",
+          "bounds": {
+            "left": 908,
+            "top": 85,
+            "width": 237,
+            "height": 111
+          }
+        },
+        {
+          "text": "saucer×",
+          "isDark": false,
+          "visible": true,
+          "fontSize": "14px",
+          "bounds": {
+            "left": 994,
+            "top": 734,
+            "width": 97,
+            "height": 38
+          }
+        }
+      ],
+      "bubblesCount": 2,
+      "overlaysCount": 2,
+      "visibleOverlays": 2,
+      "snapshot": "orv_snapshot_8.png"
+    },
+    {
+      "index": 9,
+      "panel": "orv_panel_09.png",
+      "elapsedMs": 8914,
+      "failure": null,
+      "status": "1 text regions. Edit recognized text below to improve a translation.",
+      "cards": [
+        {
+          "index": 1,
+          "korean": "10년 넘게 나 혼자 읽어온 소설의 완결을 본 그날,",
+          "english": "The day I saw the completion of the novel I had been reading alone for over 10 years,",
+          "error": "",
+          "confidence": "94% OCR"
+        }
+      ],
+      "overlays": [
+        {
+          "text": "The day I saw the completion of the novel I had been reading alone for over 10 years,×",
+          "isDark": true,
+          "visible": true,
+          "fontSize": "14px",
+          "bounds": {
+            "left": 551,
+            "top": 1100,
+            "width": 498,
+            "height": 123
+          }
+        }
+      ],
+      "bubblesCount": 1,
+      "overlaysCount": 1,
+      "visibleOverlays": 1,
+      "snapshot": "orv_snapshot_9.png"
+    },
+    {
+      "index": 10,
+      "panel": "orv_panel_10.png",
+      "elapsedMs": 7021,
+      "failure": null,
+      "status": "No readable text found. Select a tighter speech bubble, zoom in, or choose the correct source language.",
+      "cards": [],
+      "overlays": [],
+      "bubblesCount": 0,
+      "overlaysCount": 0,
+      "visibleOverlays": 0,
+      "snapshot": "orv_snapshot_10.png"
+    },
+    {
+      "index": 11,
+      "panel": "orv_panel_11.png",
+      "elapsedMs": 4380,
+      "failure": null,
+      "status": "No readable text found. Select a tighter speech bubble, zoom in, or choose the correct source language.",
+      "cards": [],
+      "overlays": [],
+      "bubblesCount": 0,
+      "overlaysCount": 0,
+      "visibleOverlays": 0,
+      "snapshot": "orv_snapshot_11.png"
+    },
+    {
+      "index": 12,
+      "panel": "orv_panel_12.png",
+      "elapsedMs": 6199,
+      "failure": null,
+      "status": "1 text regions. Edit recognized text below to improve a translation.",
+      "cards": [
+        {
+          "index": 1,
+          "korean": "말도 안 돼. …이건,",
+          "english": "This is ridiculous. … This is,",
+          "error": "",
+          "confidence": "93% OCR"
+        }
+      ],
+      "overlays": [
+        {
+          "text": "This is ridiculous. … This is,×",
+          "isDark": false,
+          "visible": true,
+          "fontSize": "14px",
+          "bounds": {
+            "left": 767,
+            "top": 431,
+            "width": 255,
+            "height": 139
+          }
+        }
+      ],
+      "bubblesCount": 1,
+      "overlaysCount": 1,
+      "visibleOverlays": 1,
+      "snapshot": "orv_snapshot_12.png"
+    }
+  ]
+}
