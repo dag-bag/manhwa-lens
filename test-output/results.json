@@ -1,5 +1,5 @@
 {
-  "testedAt": "2026-10-23T19:56:15.309Z",
+  "testedAt": "2026-10-23T22:39:03.482Z",
   "browser": "Chromium 145 (Playwright, headless extension profile)",
   "reports": [
     {
@@ -14,7 +14,7 @@
       "test": "Korean bundled OCR + live English translation + whole-bubble grouping",
       "pass": true,
       "details": [
-        "Hello Jo -ㅅ [The weather is nice today"
+        "Hello, the weather is nice today, Mr. Carl is nice."
       ]
     },
     {
@@ -41,7 +41,7 @@
       "test": "Visible-region screenshot OCR + English translation",
       "pass": true,
       "details": [
-        "Hello Jos|[ |ㄷ The weather is nice today"
+        "Hello, the weather is nice today. The weather is nice."
       ]
     },
     {
@@ -65,14 +65,14 @@
       "pass": true,
       "details": [
         "Hello",
-        "Thank you very much"
+        "thank you"
       ]
     },
     {
       "test": "chi_sim bundled model initializes and recognizes fixture",
       "pass": true,
       "details": [
-        "Hello"
+        "hello thank you"
       ]
     },
     {

@@ -1,0 +1,18 @@
+{
+  "benchmarkDate": "2026-10-23T22:31:00.190Z",
+  "benchmarks": {
+    "homonymResolution": {
+      "testCase": "복수? (plural -> Revenge)",
+      "passed": true
+    },
+    "nameDisambiguation": {
+      "testCase": "말했지, 밤? (night -> Bam)",
+      "passed": true
+    },
+    "typesetting": {
+      "balancedLineCount": 4,
+      "maxLineLength": 26
+    },
+    "honorificsCount": 16
+  }
+}
