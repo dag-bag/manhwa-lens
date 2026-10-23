@@ -90,4 +90,17 @@
     else if(message?.type==='TOGGLE'){state.visible=!state.visible;state.overlays.hidden=!state.visible;if(state.visible)state.items.forEach(position);sendResponse({ok:true});}
     else if(message?.type==='PROGRESS'&&state.busy&&state.host){state.host.style.removeProperty('display');say(message.message||'Working…');sendResponse({ok:true});}
   });
+  window.addEventListener('keydown',e=>{
+    const a=document.activeElement;if(a&&(a.tagName==='INPUT'||a.tagName==='TEXTAREA'||a.isContentEditable))return;
+    const isX=e.key==='x'||e.key==='X'||e.code==='KeyX';
+    const isZ=e.key==='z'||e.key==='Z'||e.code==='KeyZ';
+    const isC=e.key==='c'||e.key==='C'||e.code==='KeyC';
+    if((e.altKey&&isX)||(e.ctrlKey&&e.shiftKey&&isX)){
+      e.preventDefault();e.stopPropagation();selection('region',state.language);
+    }else if(e.altKey&&isZ){
+      e.preventDefault();e.stopPropagation();state.visible=!state.visible;state.overlays.hidden=!state.visible;if(state.visible)state.items.forEach(position);
+    }else if(e.altKey&&isC){
+      e.preventDefault();e.stopPropagation();clear();
+    }
+  },true);
 })();
