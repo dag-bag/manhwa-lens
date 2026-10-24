@@ -108,6 +108,11 @@ export function cleanOcrText(text, lang = 'kor') {
       .replace(/[…‥]{2,}/g, '…')
       .replace(/\.{2,}/g, '…')
       .replace(/　+/g, ' ')
+      // Normalize full-width and repeated exclamations
+      .replace(/！+/g, '!')
+      .replace(/？+/g, '?')
+      .replace(/! \?/g, '!?')
+      .replace(/\? !/g, '?!')
       // Strip boundary noise symbols
       .replace(/^[\s|_\-~=*^`'"#$<>]+/, '')
       .replace(/[\s|_\-~=*^`'"#$<>]+$/, '');

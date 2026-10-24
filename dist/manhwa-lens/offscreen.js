@@ -82,9 +82,11 @@ async function decode(dataUrl,crop) {
 async function recognize(request) {
   language(request.language);
   const canvas=await decode(request.dataUrl,request.crop);
-  const engine=await getWorker(request.language,request.tabId);
-  const regions=[];
-  const chunks=tiles(canvas.width,canvas.height);
+  const resultWidth=canvas.width,resultHeight=canvas.height;
+  try{
+    const engine=await getWorker(request.language,request.tabId);
+    const regions=[];
+    const chunks=tiles(canvas.width,canvas.height);
   if(chunks.length>24)throw new Error('This strip is too long. Select a smaller visible area.');
   for(const [index,tile] of chunks.entries()){
     await progress(request.tabId,`Reading panel ${index+1}/${chunks.length}…`);
@@ -133,12 +135,13 @@ async function recognize(request) {
   }
   if(!readable.length)throw new Error('No reliable speech-bubble or narration text found. Choose the correct language and select a tighter area around the text. Artwork and uncertain fragments were left unchanged.');
   const merged=bubbleGroups(readable,pixels,canvas.width,canvas.height);
-  await engine.setParameters({tessedit_pageseg_mode:'6'});
   try{
     for(const region of merged){
       region.text=cleanOcrText(region.text||'',request.language);
       const b=region.bbox;
       const crop=preparePaddedCrop(canvas,b,region.isDark,24);
+      const isVert=request.language==='jpn'&&(b.y1-b.y0)>(b.x1-b.x0)*1.3;
+      await engine.setParameters({tessedit_pageseg_mode:isVert?'5':'6'});
       const {data}=await engine.recognize(crop,{}, {text:true,blocks:false});
       const cleaned=cleanOcrText(data.text||'',request.language);
       const initial=cleanOcrText(region.text||'',request.language);
@@ -172,7 +175,10 @@ async function recognize(request) {
       await new Promise(r=>setTimeout(r,100));
     }
   }
-  return {regions:merged,width:canvas.width,height:canvas.height};
+    return {regions:merged,width:resultWidth,height:resultHeight};
+  }finally{
+    canvas.width=canvas.height=0;
+  }
 }
 
 chrome.runtime.onMessage.addListener((request,sender,reply)=>{
