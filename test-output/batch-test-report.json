@@ -1,12 +1,12 @@
 {
-  "testedAt": "2026-10-23T20:59:45.472Z",
+  "testedAt": "2026-10-24T17:08:03.603Z",
   "totalPanels": 14,
   "note": "Detection counts are not accuracy scores. Zero detections do not prove absence of text. Images are fixed crops, not complete chapters.",
   "results": [
     {
       "index": 1,
       "panel": "chapter-1/ch1_panel_01.png",
-      "elapsedMs": 3761,
+      "elapsedMs": 10011,
       "failure": null,
       "assessment": {
         "kind": "narration",
@@ -53,7 +53,7 @@
     {
       "index": 2,
       "panel": "chapter-1/ch1_panel_02.png",
-      "elapsedMs": 1746,
+      "elapsedMs": 4602,
       "failure": null,
       "assessment": {
         "kind": "narration",
@@ -100,7 +100,7 @@
     {
       "index": 3,
       "panel": "chapter-1/ch1_panel_03.png",
-      "elapsedMs": 2408,
+      "elapsedMs": 2641,
       "failure": null,
       "assessment": {
         "kind": "narration",
@@ -148,7 +148,7 @@
     {
       "index": 4,
       "panel": "chapter-1/ch1_panel_04.png",
-      "elapsedMs": 4763,
+      "elapsedMs": 3862,
       "failure": null,
       "assessment": {
         "kind": "glowing narration",
@@ -219,7 +219,7 @@
     {
       "index": 5,
       "panel": "chapter-1/ch1_panel_05.png",
-      "elapsedMs": 2273,
+      "elapsedMs": 2349,
       "failure": null,
       "assessment": {
         "kind": "narration",
@@ -266,7 +266,7 @@
     {
       "index": 6,
       "panel": "chapter-1/ch1_panel_06.png",
-      "elapsedMs": 1656,
+      "elapsedMs": 1624,
       "failure": null,
       "assessment": {
         "kind": "calligraphic title",
@@ -290,7 +290,7 @@
     {
       "index": 7,
       "panel": "chapter-1/ch1_panel_07.png",
-      "elapsedMs": 2252,
+      "elapsedMs": 2277,
       "failure": null,
       "assessment": {
         "kind": "Latin credits",
@@ -315,7 +315,7 @@
     {
       "index": 8,
       "panel": "chapter-2/ch2_panel_01.png",
-      "elapsedMs": 2008,
+      "elapsedMs": 1982,
       "failure": null,
       "assessment": {
         "kind": "visually verified text-free artwork",
@@ -335,7 +335,7 @@
     {
       "index": 9,
       "panel": "chapter-2/ch2_panel_02.png",
-      "elapsedMs": 3382,
+      "elapsedMs": 3721,
       "failure": null,
       "assessment": {
         "kind": "handwritten panting effects",
@@ -367,7 +367,7 @@
     {
       "index": 10,
       "panel": "chapter-2/ch2_panel_03.png",
-      "elapsedMs": 2486,
+      "elapsedMs": 2694,
       "failure": null,
       "assessment": {
         "kind": "handwritten panting effects",
@@ -393,7 +393,7 @@
     {
       "index": 11,
       "panel": "chapter-2/ch2_panel_04.png",
-      "elapsedMs": 3027,
+      "elapsedMs": 3311,
       "failure": null,
       "assessment": {
         "kind": "stylized sound effects, text present",
@@ -414,7 +414,7 @@
     {
       "index": 12,
       "panel": "chapter-2/ch2_panel_05.png",
-      "elapsedMs": 2909,
+      "elapsedMs": 2971,
       "failure": null,
       "assessment": {
         "kind": "handwritten panting effects",
@@ -441,7 +441,7 @@
     {
       "index": 13,
       "panel": "chapter-2/ch2_panel_06.png",
-      "elapsedMs": 3466,
+      "elapsedMs": 3638,
       "failure": null,
       "assessment": {
         "kind": "dialogue and panting effects",
@@ -474,7 +474,7 @@
     {
       "index": 14,
       "panel": "chapter-2/ch2_panel_07.png",
-      "elapsedMs": 4132,
+      "elapsedMs": 8056,
       "failure": null,
       "assessment": {
         "kind": "dialogue",
@@ -484,15 +484,15 @@
           "이 탑을 올라가면 언젠가 바깥 세상으로 나갈 수 있다고.."
         ],
         "matched": [
-          "탑을 올라갈꺼야.",
-          "말했지, 밤?"
+          "탑을 올라갈꺼야."
         ],
         "missing": [
+          "말했지, 밤?",
           "이 탑을 올라가면 언젠가 바깥 세상으로 나갈 수 있다고.."
         ],
         "note": "Substring coverage is not a translation accuracy score; repeated SFX require visual review."
       },
-      "status": "3 text regions. Edit recognized text below to improve a translation.",
+      "status": "7 text regions. Edit recognized text below to improve a translation.",
       "cards": [
         {
           "index": 1,
@@ -503,17 +503,45 @@
         },
         {
           "index": 2,
-          "korean": "말했지, 밤?",
-          "english": "Did you say, night?",
+          "korean": "말했",
+          "english": "said",
+          "error": "",
+          "confidence": "95% OCR"
+        },
+        {
+          "index": 3,
+          "korean": "밤?",
+          "english": "night?",
           "error": "",
           "confidence": "92% OCR"
         },
         {
-          "index": 3,
-          "korean": "이 탑을 올라가면 언젠가 바깥 세상 나갈 수 있다고.",
-          "english": "They say that if you climb this tower, you will be able to go to the outside world someday.",
+          "index": 4,
+          "korean": "ㅣ 탑",
+          "english": "ㅣTop",
           "error": "",
           "confidence": "87% OCR"
+        },
+        {
+          "index": 5,
+          "korean": "가 바깥 세상 수 있다고...",
+          "english": "The outside world could be...",
+          "error": "",
+          "confidence": "93% OCR"
+        },
+        {
+          "index": 6,
+          "korean": "라 |가면",
+          "english": "la | mask",
+          "error": "",
+          "confidence": "82% OCR"
+        },
+        {
+          "index": 7,
+          "korean": "나갈",
+          "english": "go out",
+          "error": "",
+          "confidence": "96% OCR"
         }
       ],
       "overlays": [
@@ -532,37 +560,93 @@
           "clientWidth": 165
         },
         {
-          "text": "Did you say, night?×",
+          "text": "said×",
           "isDark": false,
           "visible": true,
           "fontSize": "14px",
           "bounds": {
             "left": 488,
             "top": 656,
-            "width": 102,
-            "height": 51.8125
+            "width": 96,
+            "height": 33.90625
           },
-          "scrollWidth": 102,
-          "clientWidth": 102
+          "scrollWidth": 96,
+          "clientWidth": 96
         },
         {
-          "text": "They say that if you climb this tower, you will be able to go to the outside world someday.×",
+          "text": "night?×",
+          "isDark": false,
+          "visible": true,
+          "fontSize": "14px",
+          "bounds": {
+            "left": 555,
+            "top": 656,
+            "width": 96,
+            "height": 33.90625
+          },
+          "scrollWidth": 96,
+          "clientWidth": 96
+        },
+        {
+          "text": "ㅣTop×",
+          "isDark": false,
+          "visible": true,
+          "fontSize": "14px",
+          "bounds": {
+            "left": 546,
+            "top": 728,
+            "width": 96,
+            "height": 33.90625
+          },
+          "scrollWidth": 96,
+          "clientWidth": 96
+        },
+        {
+          "text": "The outside world could be...×",
+          "isDark": false,
+          "visible": true,
+          "fontSize": "14px",
+          "bounds": {
+            "left": 582,
+            "top": 750,
+            "width": 96,
+            "height": 87.625
+          },
+          "scrollWidth": 96,
+          "clientWidth": 96
+        },
+        {
+          "text": "la | mask×",
+          "isDark": false,
+          "visible": true,
+          "fontSize": "14px",
+          "bounds": {
+            "left": 621,
+            "top": 728,
+            "width": 96,
+            "height": 33.90625
+          },
+          "scrollWidth": 96,
+          "clientWidth": 96
+        },
+        {
+          "text": "go out×",
           "isDark": false,
           "visible": true,
           "fontSize": "14px",
           "bounds": {
             "left": 536,
-            "top": 728,
-            "width": 146,
-            "height": 105.53125
+            "top": 773,
+            "width": 96,
+            "height": 33.90625
           },
-          "scrollWidth": 146,
-          "clientWidth": 146
+          "scrollWidth": 96,
+          "clientWidth": 96
         }
       ],
-      "bubblesCount": 3,
-      "overlaysCount": 3,
-      "visibleOverlays": 3,
+      "bubblesCount": 7,
+      "overlaysCount": 7,
+      "visibleOverlays": 7,
       "snapshot": "batch_snapshot_14.png"
     }
   ],
@@ -570,8 +654,8 @@
     "panelsProcessed": 14,
     "panelsWithDetections": 6,
     "panelsWithoutDetections": 8,
-    "recognizedRegions": 9,
-    "visibleOverlays": 9,
+    "recognizedRegions": 13,
+    "visibleOverlays": 13,
     "failures": 0
   }
 }

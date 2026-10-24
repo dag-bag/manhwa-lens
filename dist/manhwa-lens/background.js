@@ -38,7 +38,9 @@ async function processImage(request,sender) {
   busy.add(tabId);
   try {
     let input,warning;
-    if(request.mode==='image') {
+    if(request.dataUrl) {
+      input={dataUrl:request.dataUrl,anchor:{x:request.rect.x+request.scroll.x,y:request.rect.y+request.scroll.y,width:request.rect.width,height:request.rect.height}};
+    } else if(request.mode==='image') {
       try { input={dataUrl:await fetchImage(request.url),anchor:{x:request.rect.x+request.scroll.x,y:request.rect.y+request.scroll.y,width:request.rect.width,height:request.rect.height}}; }
       catch(e){input=await capture(tabId,request);warning=`Direct image access failed. Translated only the visible portion instead. ${e.message}`;}
     } else if(request.mode==='region') input=await capture(tabId,request);
@@ -84,6 +86,25 @@ chrome.commands?.onCommand?.addListener(async command=>{
       await chrome.tabs.sendMessage(tab.id,{type:'TOGGLE'});
     }else if(command==='clear-translations'){
       await chrome.tabs.sendMessage(tab.id,{type:'CLEAR'});
+    }
+  }catch{}
+});
+
+chrome.runtime.onInstalled.addListener(()=>{
+  chrome.contextMenus?.create({id:'translate-image',title:'Translate image with Manhwa Lens',contexts:['image']});
+  chrome.contextMenus?.create({id:'translate-region',title:'Select comic region (Ctrl+Shift+X)',contexts:['page']});
+});
+
+chrome.contextMenus?.onClicked?.addListener(async(info,tab)=>{
+  if(!tab||!/^https?:/.test(tab.url||''))return;
+  try{
+    await chrome.scripting.executeScript({target:{tabId:tab.id},files:['content.js']}).catch(()=>{});
+    const stored=await chrome.storage.local.get('language');
+    const lang=stored.language||'kor';
+    if(info.menuItemId==='translate-image'){
+      await chrome.tabs.sendMessage(tab.id,{type:'TRANSLATE_IMAGE_URL',srcUrl:info.srcUrl,language:lang});
+    }else if(info.menuItemId==='translate-region'){
+      await chrome.tabs.sendMessage(tab.id,{type:'SELECT',mode:'region',language:lang});
     }
   }catch{}
 });

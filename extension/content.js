@@ -12,8 +12,9 @@
     const host=el('div');host.setAttribute('data-manhwa-lens','');host.style.cssText='all:initial!important;position:fixed!important;inset:0!important;z-index:2147483647!important;pointer-events:none!important;';
     const root=host.attachShadow({mode:'open'});const style=el('style');style.textContent=`
 :host{color-scheme:dark}*{box-sizing:border-box}[hidden]{display:none!important}button,textarea{font:inherit}button{background:#30213f;border:1px solid #695080;border-radius:8px;padding:8px 10px;color:#f4ecff;cursor:pointer}button:hover{background:#49315e}button:disabled{opacity:.55;cursor:wait}button:focus-visible,textarea:focus-visible{outline:2px solid #d8b5ff;outline-offset:3px}.panel{position:fixed;right:16px;top:16px;width:min(360px,calc(100vw - 32px));max-height:calc(100vh - 32px);display:flex;flex-direction:column;background:#191222;color:#eee6f8;border:1px solid #70508d;border-radius:16px;box-shadow:0 12px 50px #0008;pointer-events:auto;font:13px/1.5 system-ui,sans-serif;overflow:hidden}.head{padding:17px 18px 12px;background:linear-gradient(125deg,#362046,#20152e)}h2{font-size:17px;margin:0 0 4px}p{margin:5px 0}.sub{color:#baa6cc;font-size:11px}.actions{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px}.status{padding:12px 18px;margin:0;color:#d8c1ed;border-bottom:1px solid #3a294a;white-space:pre-wrap;overflow-wrap:anywhere}.list{overflow:auto;padding:0 16px 16px;overscroll-behavior:contain}.card{padding:14px 0;border-bottom:1px solid #3a294a}.card label{display:block;color:#bca1d0;font-size:11px;margin:4px 0}.card textarea{display:block;width:100%;min-height:72px;max-height:220px;resize:vertical;background:#100d17;color:#eee5f7;border:1px solid #59426b;border-radius:7px;padding:9px}.translated{white-space:pre-wrap;overflow-wrap:anywhere;margin:10px 0;color:#faf4ff}.error{color:#ffb6c6;white-space:pre-wrap;overflow-wrap:anywhere}.row{display:flex;gap:8px;align-items:center;margin-top:8px}.confidence{color:#ac98be;font-size:10px}.overlay{position:fixed;pointer-events:auto;background:#faf5ff;color:#241331;border:1px solid #8e64af;border-radius:7px;padding:6px 20px 6px 8px;box-shadow:0 2px 9px #0004;font:600 14px/1.35 system-ui,sans-serif;text-align:center;white-space:pre-wrap;overflow:auto;overflow-wrap:anywhere;max-height:260px;min-width:28px}.overlay button{position:absolute;right:0;top:0;border:0;border-radius:0 6px 0 5px;padding:0 4px;background:#e6d5f0;color:#503568;font:13px/18px system-ui}.selection{position:fixed;inset:0;pointer-events:auto;cursor:crosshair;touch-action:none;background:#130b201c}.selection.image{background:transparent}.box{position:fixed;border:2px solid #d4a1ff;background:#a473d326;pointer-events:none;box-shadow:0 0 0 9999px #08040c66}.hint{position:fixed;top:20px;left:50%;transform:translateX(-50%);max-width:calc(100vw - 24px);width:max-content;background:#221530;color:#f5edff;border:1px solid #a37ac3;border-radius:12px;padding:12px 16px;box-shadow:0 5px 25px #0006;font:13px/1.5 system-ui;pointer-events:auto}.hint button{margin-left:12px}`;
-    style.textContent+=`.overlay{background:#fff;color:#18131d;border:0;border-radius:12px;box-shadow:0 2px 10px rgba(0,0,0,0.12);padding:8px 12px;display:flex;align-items:center;justify-content:center;overflow:hidden;max-height:none;min-width:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;font-weight:600;line-height:1.28;letter-spacing:-0.01em;transition:opacity 0.15s ease,box-shadow 0.15s ease;cursor:pointer;-webkit-font-smoothing:antialiased}.overlay:active{opacity:0.2!important;box-shadow:none!important}.overlay.dark{background:rgba(14,11,18,0.96);color:#f8f6fc;box-shadow:0 4px 18px rgba(0,0,0,0.6);border:1px solid rgba(255,255,255,0.2)}.overlay.dark button{background:#2e223c;color:#eee5f7}.overlay.dark:hover{outline:1px solid #c3a1f2}.overlay span{display:block;width:100%;min-width:0;flex-shrink:0;text-align:center;white-space:normal;overflow-wrap:anywhere;word-break:normal;text-wrap:balance;pointer-events:none}.overlay:hover{outline:1px solid #a783db}.overlay button{opacity:0;background:#ede2fa;cursor:pointer}.overlay:hover button,.overlay:focus-within button{opacity:1}`;
+    style.textContent+=`.overlay{background:#fff;color:#18131d;border:0;border-radius:12px;box-shadow:0 2px 10px rgba(0,0,0,0.12);padding:8px 12px;display:flex;align-items:center;justify-content:center;overflow:hidden;max-height:none;min-width:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;font-weight:600;line-height:1.28;letter-spacing:-0.01em;transition:opacity 0.15s ease,box-shadow 0.15s ease;cursor:pointer;-webkit-font-smoothing:antialiased}.overlay:active{opacity:0.2!important;box-shadow:none!important}.overlay.dark{background:rgba(14,11,18,0.96);color:#f8f6fc;box-shadow:0 4px 18px rgba(0,0,0,0.6);border:1px solid rgba(255,255,255,0.2)}.overlay.dark button{background:#2e223c;color:#eee5f7}.overlay.dark:hover{outline:1px solid #c3a1f2}.overlay span{display:block;width:100%;min-width:0;flex-shrink:0;text-align:center;white-space:normal;overflow-wrap:anywhere;word-break:normal;text-wrap:balance;pointer-events:none}.overlay:hover{outline:1px solid #a783db}.overlay button{opacity:0;background:#ede2fa;cursor:pointer}.overlay:hover button,.overlay:focus-within button{opacity:1}.dropzone{position:fixed;inset:24px;border:3px dashed #a855f7;border-radius:24px;background:rgba(20,16,31,0.92);backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;z-index:2147483646;pointer-events:none;color:#f3e8ff;font:700 22px system-ui;box-shadow:0 0 60px rgba(168,85,247,0.4);text-align:center;box-sizing:border-box}.dropzone.active{display:flex}`;
     root.append(style);state.overlays=el('div');root.append(state.overlays);
+    const dropzone=el('div','📖 Drop comic image to translate with Manhwa Lens','dropzone');state.dropzone=dropzone;root.append(dropzone);
     const panel=el('aside',undefined,'panel');panel.setAttribute('aria-label','Manhwa Lens transcript');const head=el('div',undefined,'head');head.append(el('h2','Manhwa Lens'),el('p','ENGLISH TRANSLATION · LOCAL OCR','sub'));const actions=el('div',undefined,'actions');
     const toggle=button('Hide translations',()=>{state.visible=!state.visible;state.overlays.hidden=!state.visible;if(state.visible)state.items.forEach(position);toggle.textContent=state.visible?'Hide translations':'Show translations';toggle.setAttribute('aria-pressed',String(!state.visible));});toggle.setAttribute('aria-pressed','false');
     actions.append(toggle,button('Remove all',clear),button('Close',clear));head.append(actions);state.status=el('p','Ready.','status');state.status.setAttribute('role','status');state.status.setAttribute('aria-live','polite');state.list=el('div',undefined,'list');panel.append(head,state.status,state.list);root.append(panel);state.panel=panel;state.host=host;state.root=root;document.documentElement.append(host);
@@ -84,12 +85,58 @@
     });state.overlays.hidden=!state.visible;
   }
   let frame=0;function reposition(){if(frame||!state.items.length)return;frame=requestAnimationFrame(()=>{frame=0;state.items.forEach(position);});}window.addEventListener('scroll',reposition,{passive:true,capture:true});window.addEventListener('resize',reposition,{passive:true});
+  function showDropzone(show){ensureUI();state.dropzone?.classList.toggle('active',Boolean(show));}
   chrome.runtime.onMessage.addListener((message,sender,sendResponse)=>{
     if(message?.type==='SELECT'){selection(message.mode==='image'?'image':'region',message.language);sendResponse({ok:true});}
     else if(message?.type==='CLEAR'){clear();sendResponse({ok:true});}
     else if(message?.type==='TOGGLE'){state.visible=!state.visible;state.overlays.hidden=!state.visible;if(state.visible)state.items.forEach(position);sendResponse({ok:true});}
+    else if(message?.type==='TRANSLATE_IMAGE_URL'){
+      if(message.language)state.language=message.language;
+      ensureUI();
+      const imgs=Array.from(document.querySelectorAll('img'));
+      const target=imgs.find(i=>(i.currentSrc||i.src)===message.srcUrl)||imgs.find(i=>i.src&&i.src.includes(message.srcUrl));
+      if(target){
+        state.targetImage=target;
+        const rect=plainRect(target.getBoundingClientRect());
+        process({mode:'image',url:message.srcUrl,rect});
+      }else{
+        process({mode:'image',url:message.srcUrl,rect:{x:innerWidth*0.1,y:innerHeight*0.1,width:innerWidth*0.8,height:innerHeight*0.8}});
+      }
+      sendResponse({ok:true});
+    }
     else if(message?.type==='PROGRESS'&&state.busy&&state.host){state.host.style.removeProperty('display');say(message.message||'Working…');sendResponse({ok:true});}
   });
+  window.addEventListener('dragover',e=>{
+    if(e.dataTransfer?.types?.includes('Files')||e.dataTransfer?.types?.includes('text/uri-list')){
+      e.preventDefault();e.dataTransfer.dropEffect='copy';showDropzone(true);
+    }
+  },true);
+  window.addEventListener('dragleave',e=>{
+    if(!e.relatedTarget||e.relatedTarget===document.documentElement){showDropzone(false);}
+  },true);
+  window.addEventListener('drop',async e=>{
+    showDropzone(false);
+    const files=e.dataTransfer?.files;
+    if(files&&files.length>0){
+      const file=files[0];
+      if(file.type.startsWith('image/')){
+        e.preventDefault();e.stopPropagation();ensureUI();
+        const reader=new FileReader();
+        reader.onload=()=>{
+          const dataUrl=reader.result;
+          state.targetImage=null;
+          process({mode:'image',dataUrl,rect:{x:innerWidth*0.05,y:innerHeight*0.05,width:innerWidth*0.9,height:innerHeight*0.9}});
+        };
+        reader.readAsDataURL(file);
+        return;
+      }
+    }
+    const uri=e.dataTransfer?.getData('text/uri-list')||e.dataTransfer?.getData('text/plain');
+    if(uri&&(uri.startsWith('http://')||uri.startsWith('https://')||uri.startsWith('data:image/'))){
+      e.preventDefault();e.stopPropagation();ensureUI();state.targetImage=null;
+      process({mode:'image',url:uri,rect:{x:innerWidth*0.05,y:innerHeight*0.05,width:innerWidth*0.9,height:innerHeight*0.9}});
+    }
+  },true);
   window.addEventListener('keydown',e=>{
     const a=document.activeElement;if(a&&(a.tagName==='INPUT'||a.tagName==='TEXTAREA'||a.isContentEditable))return;
     const key=(e.key||'').toLowerCase(),code=e.code||'';
