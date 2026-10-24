@@ -67,9 +67,14 @@ export function isReadable(region, lang, surfaceOrLight) {
   const h = region.bbox.y1 - region.bbox.y0;
   if (h < 10) return false;
 
+  // Japanese specific noise rejection:
+  // Reject isolated single kana (like 'か', 'は', 'の') which translate to "mosquito", "ha", etc.
+  if (lang === 'jpn' && count <= 1) return false;
+
   // Real dialogue in any color (light bubbles, gray chat boxes, black narration panels):
   // 1. Multiple syllables with good confidence (dialogue lines, narration sentences)
-  if (count >= 2 && region.confidence >= 42) return true;
+  const minConf = lang === 'jpn' ? 55 : 42;
+  if (count >= 2 && region.confidence >= minConf) return true;
   // 2. Single syllable requires high confidence and clean background (light >= 0.65 or solid dark panel)
   if (count === 1 && region.confidence >= 80 && (typeof surfaceOrLight === 'number' ? surfaceOrLight >= 0.65 : true)) return true;
 
@@ -94,6 +99,15 @@ export function cleanOcrText(text, lang = 'kor') {
       .replace(/\.\s*\.\s*\./g, '...')
       // Remove space before punctuation
       .replace(/\s+([.,!?:;~])/g, '$1')
+      // Strip boundary noise symbols
+      .replace(/^[\s|_\-~=*^`'"#$<>]+/, '')
+      .replace(/[\s|_\-~=*^`'"#$<>]+$/, '');
+  } else if (lang === 'jpn') {
+    cleaned = cleaned
+      // Normalize Japanese ellipses and dots
+      .replace(/[…‥]{2,}/g, '…')
+      .replace(/\.{2,}/g, '…')
+      .replace(/　+/g, ' ')
       // Strip boundary noise symbols
       .replace(/^[\s|_\-~=*^`'"#$<>]+/, '')
       .replace(/[\s|_\-~=*^`'"#$<>]+$/, '');
@@ -149,23 +163,40 @@ export function mergeSameLine(regions, pixels, width, height) {
       const isAlignedY = (overlap / Math.min(h, ah) > 0.15) || (centerDiff < Math.max(h, ah) * 1.0);
       if (!isAlignedY) return false;
 
-      // Close horizontal gap
-      if (gap < Math.max(h, ah) * 2.8) return true;
+      // Check if a speech bubble outline or border separates them horizontally
+      if (pixels && gap > 4) {
+        const checkX0 = Math.min(a.x1, b.x1);
+        const checkX1 = Math.max(a.x0, b.x0);
+        const checkY = Math.round((cy + acy) / 2);
+        let borderFound = false;
+        for (let x = checkX0; x < checkX1; x += 1) {
+          const i = (checkY * width + x) * 4;
+          const lum = 0.299 * pixels[i] + 0.587 * pixels[i + 1] + 0.114 * pixels[i + 2];
+          if (!region.isDark && lum < 85) { borderFound = true; break; }
+          if (region.isDark && lum > 165) { borderFound = true; break; }
+        }
+        // If an outline/border exists between them, they belong to separate bubbles
+        if (borderFound) return false;
+      }
 
-      // Wider gap (e.g. censored 'xx' or spaced words) across continuous background
-      if (gap < Math.max(h, ah) * 6.0 && pixels) {
+      // Close horizontal gap within a speech bubble line
+      if (gap < Math.max(h, ah) * 1.5) return true;
+
+      // Spaced dialogue words (e.g. censored 'xx' or emphasis) within continuous speech bubble:
+      // Cap at 2.4x line height (never bridge across panels or gutters!)
+      if (gap < Math.max(h, ah) * 2.4 && pixels) {
         const checkX0 = Math.min(a.x1, b.x1);
         const checkX1 = Math.max(a.x0, b.x0);
         const checkY = Math.round((cy + acy) / 2);
         let pass = 0, count = 0;
         const expectDark = region.isDark;
-        for (let x = checkX0; x < checkX1; x += 4) {
+        for (let x = checkX0; x < checkX1; x += 3) {
           const i = (checkY * width + x) * 4;
           const lum = 0.299 * pixels[i] + 0.587 * pixels[i + 1] + 0.114 * pixels[i + 2];
-          if (expectDark ? lum < 100 : lum > 165) pass++;
+          if (expectDark ? lum < 100 : lum > 175) pass++;
           count++;
         }
-        if (count && pass / count > 0.40) return true;
+        if (count && pass / count >= 0.85) return true;
       }
 
       return false;
@@ -211,10 +242,11 @@ export function bubbleGroups(regions, pixels, width, height) {
       const isStacked = vGap >= -Math.min(ah, bh) * 0.35 && vGap <= Math.max(ah, bh) * 1.10;
       if (!isStacked) return false;
 
-      // Horizontal span overlap or center proximity
+      // Horizontal span overlap or center proximity within the same speech bubble
       const hOverlap = Math.min(a.x1, b.x1) - Math.max(a.x0, b.x0);
+      const minSpan = Math.min(a.x1 - a.x0, b.x1 - b.x0);
       const maxSpan = Math.max(a.x1 - a.x0, b.x1 - b.x0);
-      const isNearX = hOverlap > -Math.max(ah, bh) * 1.5 && Math.abs(bcx - acx) < maxSpan * 0.9;
+      const isNearX = hOverlap > -minSpan * 0.25 && Math.abs(bcx - acx) < maxSpan * 0.65;
       if (!isNearX) return false;
 
       // Check if there is an opposite-polarity barrier between lines of different bubbles

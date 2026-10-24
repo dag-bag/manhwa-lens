@@ -1,0 +1,408 @@
+{
+  "testedAt": "2026-10-24T12:01:42.371Z",
+  "language": "jpn",
+  "results": [
+    {
+      "index": 1,
+      "filename": "11.jpg",
+      "elapsedMs": 2846,
+      "failure": null,
+      "status": "1 text regions. Edit recognized text below to improve a translation.",
+      "cards": [
+        {
+          "index": 1,
+          "japanese": "のにに *あも も",
+          "english": "Nonini *Amo Mo",
+          "confidence": "60% OCR"
+        }
+      ],
+      "overlays": [
+        {
+          "text": "Nonini *Amo Mo×",
+          "isDark": false,
+          "visible": true,
+          "bounds": {
+            "left": 457.5625,
+            "top": 386.828125,
+            "width": 657.625,
+            "height": 331.078125
+          }
+        }
+      ],
+      "bubblesCount": 1,
+      "overlaysCount": 1,
+      "visibleOverlays": 1,
+      "snapshot": "real_manga_result_1.png"
+    },
+    {
+      "index": 2,
+      "filename": "01.jpg",
+      "elapsedMs": 2440,
+      "failure": null,
+      "status": "1 text regions. Edit recognized text below to improve a translation.",
+      "cards": [
+        {
+          "index": 1,
+          "japanese": "なの",
+          "english": "Nano",
+          "confidence": "63% OCR"
+        }
+      ],
+      "overlays": [
+        {
+          "text": "Nano×",
+          "isDark": false,
+          "visible": true,
+          "bounds": {
+            "left": 446.59375,
+            "top": 423.296875,
+            "width": 472.71875,
+            "height": 201.9375
+          }
+        }
+      ],
+      "bubblesCount": 1,
+      "overlaysCount": 1,
+      "visibleOverlays": 1,
+      "snapshot": "real_manga_result_2.png"
+    },
+    {
+      "index": 3,
+      "filename": "cc-100.jpg",
+      "elapsedMs": 21508,
+      "failure": null,
+      "status": "19 text regions. Edit recognized text below to improve a translation.",
+      "cards": [
+        {
+          "index": 1,
+          "japanese": "ソ 中ぇ フ 古",
+          "english": "So medium old",
+          "confidence": "81% OCR"
+        },
+        {
+          "index": 2,
+          "japanese": "星ぇ",
+          "english": "Star",
+          "confidence": "78% OCR"
+        },
+        {
+          "index": 3,
+          "japanese": "(いつに",
+          "english": "(When",
+          "confidence": "93% OCR"
+        },
+        {
+          "index": 4,
+          "japanese": "媒* は",
+          "english": "medium* is",
+          "confidence": "69% OCR"
+        },
+        {
+          "index": 5,
+          "japanese": "の ッ",
+          "english": "Of",
+          "confidence": "82% OCR"
+        },
+        {
+          "index": 6,
+          "japanese": "店』が ANオープンい",
+          "english": "The store is open",
+          "confidence": "77% OCR"
+        },
+        {
+          "index": 7,
+          "japanese": "ふだんから 常食して いれ",
+          "english": "Eat regularly",
+          "confidence": "88% OCR"
+        },
+        {
+          "index": 8,
+          "japanese": "ア 飲ァ> 取s む ル 酒n 飲へ コ と",
+          "english": "a drink> to take a drink n to drink with",
+          "confidence": "56% OCR"
+        },
+        {
+          "index": 9,
+          "japanese": "紳の病気には かから ないと いわれています。",
+          "english": "It is said that it is not susceptible to men's diseases.",
+          "confidence": "69% OCR"
+        },
+        {
+          "index": 10,
+          "japanese": "不 コ 正 選 の 挙 疑 で",
+          "english": "Due to allegations of fraudulent election",
+          "confidence": "55% OCR"
+        },
+        {
+          "index": 11,
+          "japanese": "つたスス 対 けめト 処。 るなし 法s いス と よやし う疲 て 気れ は をを",
+          "english": "Tsutasusu versus Kemeto. I'm tired and I'm tired and I'm resting in bed.",
+          "confidence": "73% OCR"
+        },
+        {
+          "index": 12,
+          "japanese": "た 将 い 来 が 的 巡 に り は 合 結 のし い 婚",
+          "english": "In the future, the goal is to have a marriage that is consummable.",
+          "confidence": "81% OCR"
+        },
+        {
+          "index": 13,
+          "japanese": "[ジン",
+          "english": "[gin",
+          "confidence": "71% OCR"
+        },
+        {
+          "index": 14,
+          "japanese": "男性は平均でも",
+          "english": "On average, men",
+          "confidence": "91% OCR"
+        },
+        {
+          "index": 15,
+          "japanese": "似たよう",
+          "english": "similar",
+          "confidence": "93% OCR"
+        },
+        {
+          "index": 16,
+          "japanese": "000円ががる",
+          "english": "000 yen is earned",
+          "confidence": "58% OCR"
+        },
+        {
+          "index": 17,
+          "japanese": "は で",
+          "english": "In the",
+          "confidence": "94% OCR"
+        },
+        {
+          "index": 18,
+          "japanese": "ブ は",
+          "english": "Bu is",
+          "confidence": "94% OCR"
+        },
+        {
+          "index": 19,
+          "japanese": "描きつつ、年回の部誌の",
+          "english": "While drawing, I am writing about the annual magazine.",
+          "confidence": "84% OCR"
+        }
+      ],
+      "overlays": [
+        {
+          "text": "So medium old×",
+          "isDark": false,
+          "visible": true,
+          "bounds": {
+            "left": 952.4375,
+            "top": 34.078125,
+            "width": 54,
+            "height": 89.265625
+          }
+        },
+        {
+          "text": "Star×",
+          "isDark": false,
+          "visible": true,
+          "bounds": {
+            "left": 1207.8125,
+            "top": 88.796875,
+            "width": 96,
+            "height": 33.90625
+          }
+        },
+        {
+          "text": "(When×",
+          "isDark": false,
+          "visible": true,
+          "bounds": {
+            "left": 678.5,
+            "top": 87.359375,
+            "width": 130.5,
+            "height": 159.828125
+          }
+        },
+        {
+          "text": "medium* is×",
+          "isDark": false,
+          "visible": true,
+          "bounds": {
+            "left": 1185.3125,
+            "top": 186.71875,
+            "width": 96,
+            "height": 40.3125
+          }
+        },
+        {
+          "text": "Of×",
+          "isDark": false,
+          "visible": true,
+          "bounds": {
+            "left": 951.875,
+            "top": 163.671875,
+            "width": 45.5625,
+            "height": 41.75
+          }
+        },
+        {
+          "text": "The store is open×",
+          "isDark": false,
+          "visible": true,
+          "bounds": {
+            "left": 350,
+            "top": 205.4375,
+            "width": 74.25,
+            "height": 84.953125
+          }
+        },
+        {
+          "text": "Eat regularly×",
+          "isDark": false,
+          "visible": true,
+          "bounds": {
+            "left": 828.125,
+            "top": 346.546875,
+            "width": 96,
+            "height": 76.3125
+          }
+        },
+        {
+          "text": "a drink> to take a drink n to drink with×",
+          "isDark": false,
+          "visible": true,
+          "bounds": {
+            "left": 601.4375,
+            "top": 346.546875,
+            "width": 96,
+            "height": 87.625
+          }
+        },
+        {
+          "text": "It is said that it is not susceptible to men's diseases.×",
+          "isDark": false,
+          "visible": true,
+          "bounds": {
+            "left": 828.125,
+            "top": 432.953125,
+            "width": 96,
+            "height": 123.4375
+          }
+        },
+        {
+          "text": "Due to allegations of fraudulent election×",
+          "isDark": false,
+          "visible": true,
+          "bounds": {
+            "left": 1174.625,
+            "top": 630.234375,
+            "width": 96,
+            "height": 142.546875
+          }
+        },
+        {
+          "text": "Tsutasusu versus Kemeto. I'm tired and I'm tired and I'm resting in bed.×",
+          "isDark": false,
+          "visible": true,
+          "bounds": {
+            "left": 1050.3125,
+            "top": 628.796875,
+            "width": 72.5625,
+            "height": 244.796875
+          }
+        },
+        {
+          "text": "In the future, the goal is to have a marriage that is consummable.×",
+          "isDark": false,
+          "visible": true,
+          "bounds": {
+            "left": 950.1875,
+            "top": 621.59375,
+            "width": 96,
+            "height": 252
+          }
+        },
+        {
+          "text": "[gin×",
+          "isDark": false,
+          "visible": true,
+          "bounds": {
+            "left": 355.625,
+            "top": 600,
+            "width": 96,
+            "height": 66.234375
+          }
+        },
+        {
+          "text": "On average, men×",
+          "isDark": true,
+          "visible": true,
+          "bounds": {
+            "left": 818.5625,
+            "top": 651.828125,
+            "width": 96,
+            "height": 71.71875
+          }
+        },
+        {
+          "text": "similar×",
+          "isDark": false,
+          "visible": true,
+          "bounds": {
+            "left": 690.3125,
+            "top": 719.515625,
+            "width": 85.5,
+            "height": 63.359375
+          }
+        },
+        {
+          "text": "000 yen is earned×",
+          "isDark": true,
+          "visible": true,
+          "bounds": {
+            "left": 818.5625,
+            "top": 774.234375,
+            "width": 96,
+            "height": 53.8125
+          }
+        },
+        {
+          "text": "In the×",
+          "isDark": false,
+          "visible": true,
+          "bounds": {
+            "left": 378.125,
+            "top": 777.109375,
+            "width": 65.8125,
+            "height": 51.828125
+          }
+        },
+        {
+          "text": "Bu is×",
+          "isDark": false,
+          "visible": true,
+          "bounds": {
+            "left": 368.5625,
+            "top": 948.46875,
+            "width": 54.5625,
+            "height": 56.15625
+          }
+        },
+        {
+          "text": "While drawing, I am writing about the annual magazine.×",
+          "isDark": false,
+          "visible": true,
+          "bounds": {
+            "left": 918.125,
+            "top": 1029.109375,
+            "width": 107.4375,
+            "height": 123.4375
+          }
+        }
+      ],
+      "bubblesCount": 19,
+      "overlaysCount": 19,
+      "visibleOverlays": 19,
+      "snapshot": "real_manga_result_3.png"
+    }
+  ]
+}
