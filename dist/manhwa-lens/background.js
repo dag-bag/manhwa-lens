@@ -46,7 +46,7 @@ async function processImage(request,sender) {
     } else if(request.mode==='region') input=await capture(tabId,request);
     else throw new Error('Unknown capture mode.');
     await offscreen();
-    const response=await chrome.runtime.sendMessage({target:'offscreen',type:'OCR',dataUrl:input.dataUrl,crop:input.crop,language:request.language,tabId});
+    const response=await chrome.runtime.sendMessage({target:'offscreen',type:'OCR',dataUrl:input.dataUrl,crop:input.crop,language:request.language,targetLanguage:request.targetLanguage||'en',tabId});
     if(!response?.ok)throw new Error(response?.error||'OCR did not respond. Please try again.');
     return {ok:true,result:response.result,anchor:input.anchor,warning};
   } finally {busy.delete(tabId);}
@@ -58,14 +58,14 @@ chrome.runtime.onMessage.addListener((request,sender,reply)=>{
     if(request.type==='PROCESS')return processImage(request,sender);
     if(request.type==='TRANSLATE') {
       translationText(request.text);language(request.language);await offscreen();
-      return chrome.runtime.sendMessage({target:'offscreen',type:'TRANSLATE',text:request.text,language:request.language});
+      return chrome.runtime.sendMessage({target:'offscreen',type:'TRANSLATE',text:request.text,language:request.language,targetLanguage:request.targetLanguage||'en'});
     }
     if(request.type==='START'||request.type==='CLEAR') {
       if(sender.url!==chrome.runtime.getURL('popup.html'))throw new Error('Start translation from the extension toolbar.');
       const tab=await chrome.tabs.get(request.tabId);
       if(!/^https?:/.test(tab.url||''))throw new Error('Open a normal HTTP(S) webpage. Browser settings, stores and PDF viewers may block extensions.');
       await chrome.scripting.executeScript({target:{tabId:tab.id},files:['content.js']});
-      await chrome.tabs.sendMessage(tab.id,request.type==='CLEAR'?{type:'CLEAR'}:{type:'SELECT',mode:request.mode,language:language(request.language)});
+      await chrome.tabs.sendMessage(tab.id,request.type==='CLEAR'?{type:'CLEAR'}:{type:'SELECT',mode:request.mode,language:language(request.language),targetLanguage:request.targetLanguage||'en'});
       return {ok:true};
     }
     return {ok:false,error:'Unknown request.'};

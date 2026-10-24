@@ -4,18 +4,19 @@ const cache=new Map();
 let chain=Promise.resolve(),worker,workerLanguage;
 const progress=(tabId,message)=>chrome.runtime.sendMessage({type:'OCR_PROGRESS',tabId,message}).catch(()=>{});
 
-async function translate(text,lang) {
+async function translate(text,lang,targetLang='en') {
   text=translationText(text);language(lang);
-  if(lang==='eng')return text;
-  if(/^[\s\d\p{P}\p{S}a-zA-Z]+$/u.test(text))return text;
-  const key=`${lang}:${text}`;if(cache.has(key))return cache.get(key);
+  const tl=targetLang||'en';
+  if(lang==='eng'&&tl==='en')return text;
+  if(tl==='en'&&/^[\s\d\p{P}\p{S}a-zA-Z]+$/u.test(text))return text;
+  const key=`${lang}:${tl}:${text}`;if(cache.has(key))return cache.get(key);
   const sl=LANGUAGES[lang]||'auto';
   let translated;
 
   // Tier 1: Google Translate gtx
   try {
     const url=new URL('https://translate.googleapis.com/translate_a/single');
-    url.search=new URLSearchParams({client:'gtx',sl,tl:'en',dt:'t',q:text}).toString();
+    url.search=new URLSearchParams({client:'gtx',sl,tl,dt:'t',q:text}).toString();
     const res=await fetch(url,{credentials:'omit',signal:AbortSignal.timeout(8000)});
     if(res.ok)translated=parseTranslation(await res.json());
   }catch{}
@@ -24,7 +25,7 @@ async function translate(text,lang) {
   if(!translated){
     try {
       const url=new URL('https://translate.googleapis.com/translate_a/single');
-      url.search=new URLSearchParams({client:'dict-chrome-ex',sl:'auto',tl:'en',dt:'t',q:text}).toString();
+      url.search=new URLSearchParams({client:'dict-chrome-ex',sl:'auto',tl,dt:'t',q:text}).toString();
       const res=await fetch(url,{credentials:'omit',signal:AbortSignal.timeout(8000)});
       if(res.ok)translated=parseTranslation(await res.json());
     }catch{}
@@ -33,7 +34,7 @@ async function translate(text,lang) {
   // Tier 3: MyMemory free community translation API
   if(!translated){
     try {
-      const pair=(sl==='auto'?'ja':sl)+'|en';
+      const pair=(sl==='auto'?'ja':sl)+'|'+tl;
       const url=new URL('https://api.mymemory.translated.net/get');
       url.search=new URLSearchParams({q:text,langpair:pair}).toString();
       const res=await fetch(url,{credentials:'omit',signal:AbortSignal.timeout(8000)});
@@ -167,7 +168,7 @@ async function recognize(request) {
   for(const [i,region] of merged.entries()){
     await progress(request.tabId,`Translating ${i+1}/${merged.length}…`);
     try{
-      region.translation=await translate(region.text,request.language);
+      region.translation=await translate(region.text,request.language,request.targetLanguage||'en');
     }catch(e){
       region.error=e.message;
     }
@@ -185,7 +186,7 @@ chrome.runtime.onMessage.addListener((request,sender,reply)=>{
   if(sender.id!==chrome.runtime.id||request.target!=='offscreen')return;
   const task=async()=>{
     try{
-      if(request.type==='TRANSLATE')return {ok:true,text:await translate(request.text,request.language)};
+      if(request.type==='TRANSLATE')return {ok:true,text:await translate(request.text,request.language,request.targetLanguage||'en')};
       if(request.type==='OCR')return {ok:true,result:await recognize(request)};
       throw new Error('Unknown OCR request.');
     }catch(e){return {ok:false,error:e.message||String(e)};}

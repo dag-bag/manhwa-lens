@@ -1,4 +1,6 @@
 export const LANGUAGES = {kor:'ko',jpn:'ja',chi_sim:'zh-CN',eng:'en'};
+export const TARGET_LANGUAGES = {en:'English',es:'Spanish · Español',fr:'French · Français',id:'Indonesian · Bahasa Indonesia',pt:'Portuguese · Português',de:'German · Deutsch',hi:'Hindi · हिन्दी'};
+export function targetLanguage(value = 'en') { return Object.hasOwn(TARGET_LANGUAGES, value) ? value : 'en'; }
 export function language(value) { if (!Object.hasOwn(LANGUAGES,value)) throw new Error('Choose a supported OCR language.'); return value; }
 export function cropRect(rect, viewport) {
   if (!rect || !viewport || ![rect.x,rect.y,rect.width,rect.height,viewport.width,viewport.height].every(Number.isFinite)) throw new Error('Invalid capture rectangle.');

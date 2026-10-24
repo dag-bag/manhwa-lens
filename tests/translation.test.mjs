@@ -30,3 +30,10 @@ test('community quota error is never displayed as an English translation',async(
  assert.equal((await translate('할당량 오류')).ok,false);
 });
 test('English OCR mode avoids any translation network request',async()=>{globalThis.fetch=async()=>{throw new Error('Unexpected network access');};assert.deepEqual(await translate('Hello','eng'),{ok:true,text:'Hello'});});
+test('supports custom target languages (e.g. Spanish es)',async()=>{
+  let requestedTl='';
+  globalThis.fetch=async(url)=>{requestedTl=url.searchParams.get('tl');return Response.json([[['Hola']]])};
+  const res=await new Promise(resolve=>listener({target:'offscreen',type:'TRANSLATE',text:'안녕',language:'kor',targetLanguage:'es'},{id:'test-extension'},resolve));
+  assert.deepEqual(res,{ok:true,text:'Hola'});
+  assert.equal(requestedTl,'es');
+});
